@@ -19,8 +19,8 @@
 
 
 > ng generate module app-routing --flat --module=app	**#Generate a new module app-routing**
->> --flat **#puts the file in src/app instead of its own root folder**
->> --moduele=app **#tells the CLI to register it in the imports array of the AppModule**
+> * --flat **#puts the file in src/app instead of its own root folder**
+> * --moduele=app **#tells the CLI to register it in the imports array of the AppModule**
 	
 **#Initialize existing project (git).**
 > npm install
