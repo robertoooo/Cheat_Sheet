@@ -2,7 +2,7 @@
 * ng new angular-tour-of-heroes   **#Opens a new project**
 
 * ng serve --open                 **#Builds the app, starts the development server, watches the source files, and rebuilds the app as you make changes**
-..* --open                      **#Flag that opens a browser to http://localhost:4200**
+... --open                      **#Flag that opens a browser to http://localhost:4200**
 
 * ng generate component heroes    **#Generate a new component named heroes**
 
