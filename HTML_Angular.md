@@ -42,15 +42,19 @@
    <!-- Create a button that listens for a click event
    The event runs the onClick() method which prints it in console -->
    onClick(){console.log('Welcome to Codeevolution')}
+```
 
+```html
 Template Reference Variable
    <input #myInput type = "text">
    <button (click)="logMessage(myInput.value)">Log</button>
    <!-- Using a reference variable myInput to store the text input
    On click, send the value to method logMessage which prints it to consol-->
    logMessage(value){console.log(value);}
+```
 
 Two way binding
+```html
  <input [(ngModel)]="name" type = "text">
  {{name}}
  <!-- From the input, the value flows to the class property
