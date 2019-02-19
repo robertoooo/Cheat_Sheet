@@ -1,3 +1,5 @@
+
+```python
 ng new angular-tour-of-heroes	  #Opens a new project
 ng serve --open					        #Builds the app, starts the development server, watches the source files, and rebuilds the app as you make changes
 	--open 						            #Flag that opens a browser to http://localhost:4200 
@@ -21,3 +23,7 @@ ng generate module app-routing --flat --module=app	#Generate a new module app-ro
 #Initialize existing project (git).
 npm install
 npm start/serve 
+
+
+print ("HEJ")
+```
