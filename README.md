@@ -5,7 +5,7 @@ My sheet sheets for different applications and languages
 
 
 ## GIT CLI
-```console
+```shell class:"lineNo"
 
 #Adding repository 
 git remote add origin remote repository URL
