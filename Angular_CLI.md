@@ -1,6 +1,6 @@
 ### Angluar CLI Cheat Sheet
 
-```console
+```shell
 ng new angular-tour-of-heroes   #Opens a new project
 
 ng serve --open                 #Builds the app, starts the development server, watches the source files, and rebuilds the app as you make changes
