@@ -1,5 +1,4 @@
-# Angular CLI
-
+### Angluar CLI Cheat Sheet
 > ng new angular-tour-of-heroes   **#Opens a new project**
 
 > ng serve --open                 **#Builds the app, starts the development server, watches the source files, and rebuilds the app as you make changes**
@@ -15,6 +14,7 @@
 > ng generate service message     **#Generates skeleton**
 	
 > code FILE                       **#Opens VS with the file you specify**
+
 > ii .                            **#Opens current folder with GUI (Invoke Item)**
 
 
