@@ -44,8 +44,9 @@
    onClick(){console.log('Welcome to Codeevolution')}
 ```
 
-```html
+
 Template Reference Variable
+```html
    <input #myInput type = "text">
    <button (click)="logMessage(myInput.value)">Log</button>
    <!-- Using a reference variable myInput to store the text input
