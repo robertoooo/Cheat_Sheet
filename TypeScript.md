@@ -9,3 +9,10 @@ for (let key in myDictionary) {
 
 
 ```
+
+#### Difference between push and add
+> "Push" can return the new length of the array and "Add" returns void.
+```ts
+ Array.add(array, item)
+ Array.push([item1 [item2 [. . . [itemN ]]]])
+ ```
