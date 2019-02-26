@@ -1,10 +1,22 @@
 ### TypeScript Cheat Sheet
 
+*To Loop over a Dictionary*
 ```ts
 //To loop over a dictionary
 for (let key in myDictionary) {
     let value = myDictionary[key];
     // Use `key` and `value`
+}
+
+
+```
+
+
+*To Loop over a List*
+```ts
+//To loop over a list
+for (var element in list) {
+    console.log(element)
 }
 
 
