@@ -28,3 +28,8 @@ for (var element in list) {
  Array.add(array, item)
  Array.push([item1 [item2 [. . . [itemN ]]]])
  ```
+
+**Type of Variable**
+```ts
+console.log(typeof(variable))
+ ```
