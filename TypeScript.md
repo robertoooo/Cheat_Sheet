@@ -1,6 +1,6 @@
 ### TypeScript Cheat Sheet
 
-*To Loop over a Dictionary*
+**To Loop over a Dictionary**
 ```ts
 //To loop over a dictionary
 for (let key in myDictionary) {
@@ -12,7 +12,7 @@ for (let key in myDictionary) {
 ```
 
 
-*To Loop over a List*
+**To Loop over a List**
 ```ts
 //To loop over a list
 for (var element in list) {
@@ -22,7 +22,7 @@ for (var element in list) {
 
 ```
 
-#### Difference between push and add
+**Difference between push and add**
 > "Push" can return the new length of the array and "Add" returns void.
 ```ts
  Array.add(array, item)
