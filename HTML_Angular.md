@@ -1,5 +1,7 @@
 ### HTML Cheat sheet
 
+The class in the HTML for a picture have an css connected to it, describing at least the size of the picture.
+
 ```html
 
 <h2> Welcome {{name}}	</h2>				<!-- Interpolate the name -->
