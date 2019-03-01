@@ -33,3 +33,12 @@ for (var element in list) {
 ```ts
 console.log(typeof(variable))
  ```
+ 
+**Defining a class
+```ts
+class PizzaMaker {
+  static create(event: { name: string; toppings: string[] }) {
+    return { name: event.name, toppings: event.toppings };
+  }
+} 
+```
