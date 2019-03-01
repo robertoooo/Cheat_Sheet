@@ -36,7 +36,7 @@ console.log(typeof(variable))
  
  ---
  
-## TypeScript Class
+# TypeScript Class
 Defning a class named PizzaMaker. 
 ```ts
 class PizzaMaker {
@@ -60,3 +60,4 @@ If PizzaMaker did not define create as a static method, then we would need to cr
 ```ts
 const pizzaMaker = new PizzaMaker();
 ```
+We get the same output with create and static method. Adding static properties and methods to a class makes them act like a singelton while defning a non-static properties and methods make them act like a factory. 
