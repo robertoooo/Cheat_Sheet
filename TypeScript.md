@@ -56,4 +56,7 @@ const pizza = PizzaMaker.create({
 console.log(pizza);
 // Output: { name: 'Inferno', toppings: [ 'cheese', 'peppers' ] }
 ```
-
+If PizzaMaker did not define create as a static method, then we would need to create an instance of PizzaMaker
+```ts
+const pizzaMaker = new PizzaMaker();
+```
