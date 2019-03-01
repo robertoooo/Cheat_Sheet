@@ -34,7 +34,9 @@ for (var element in list) {
 console.log(typeof(variable))
  ```
  
-**Defining a class
+ 
+##TypeScript Class
+Defning a class named PizzaMaker. 
 ```ts
 class PizzaMaker {
   static create(event: { name: string; toppings: string[] }) {
@@ -42,3 +44,15 @@ class PizzaMaker {
   }
 } 
 ```
+PizzaMaker has a static method called create. We can use this method without creating an instance of the class.
+We just invoke the method on the class directly.
+```ts
+const pizza = PizzaMaker.create({
+  name: 'Inferno',
+  toppings: ['cheese', 'peppers'],
+});
+
+console.log(pizza);
+// Output: { name: 'Inferno', toppings: [ 'cheese', 'peppers' ] }
+```
+
