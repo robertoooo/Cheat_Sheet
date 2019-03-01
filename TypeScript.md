@@ -34,8 +34,9 @@ for (var element in list) {
 console.log(typeof(variable))
  ```
  
+ ---
  
-##TypeScript Class
+## TypeScript Class
 Defning a class named PizzaMaker. 
 ```ts
 class PizzaMaker {
