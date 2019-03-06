@@ -36,4 +36,20 @@ console.log(typeof(variable))
  
  ---
  
+ **Add an object from a class**
+ The class
+ ```ts
+ export class car {
+    carName: string;
+    carID: string;
+    carAddons: string[];
+}
+ ```
+ 
+ Creating the list car_list of objects car
+ ```ts
+ let car_list: car[] = []  //car_list is a list of cars
+ ```
+ 
+ 
 
