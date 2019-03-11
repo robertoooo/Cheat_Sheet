@@ -1,13 +1,13 @@
 ### HTML Cheat sheet
 Input box in the html that triggers a function in typescript.
-
+HTML
 ```html
 Enter choices: fpc272extra low
 <input #box1 (keyup.enter)="loadSession([box1.value,box2.value])">
 <input #box2 (keyup.enter)="loadSession([box1.value,box2.value])">
 <p>{{testClickedInfoList}}</p>
 ```
-The backend code:
+The backend code in TypeScript:
 ```ts
     loadSession(testClickedInfoList: []) { 
         this.testClickedInfoList = testClickedInfoList
