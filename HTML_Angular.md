@@ -1,4 +1,20 @@
 ### HTML Cheat sheet
+Input box in the html that triggers a function in typescript.
+
+```html
+Enter choices: fpc272extra low
+<input #box1 (keyup.enter)="loadSession([box1.value,box2.value])">
+<input #box2 (keyup.enter)="loadSession([box1.value,box2.value])">
+<p>{{testClickedInfoList}}</p>
+```
+The backend code:
+```ts
+    loadSession(testClickedInfoList: []) { 
+        this.testClickedInfoList = testClickedInfoList
+        console.log(testClickedInfoList) }	//Logs an array of multiple values
+```
+
+
 
 The class in the HTML for a picture have an css connected to it, describing at least the size of the picture.
 
