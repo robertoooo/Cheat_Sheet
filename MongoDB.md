@@ -75,4 +75,17 @@ for post in mydb.mytable.find({"date": {"$lt": datetime.datetime(2015, 12, 1)}})
 ```
 Where "$lt": means lower then.  
 
-
+### replace_one()
+Replace a document based on a field name
+```python
+# replace one of the employee data whose name is Mr.Shaurya 
+result = collection.replace_one( 
+        {"name":"Mr.Shaurya"}, 
+        { 
+                "name":"Mr.GfG", 
+                "eid":45, 
+                "location":"noida"
+                  
+                } 
+        ) 
+```
