@@ -2,7 +2,7 @@
 
 ### Create a MongoClient against the running mongod instance
 
-```py
+```python
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 ```
@@ -11,7 +11,7 @@ client = MongoClient('localhost', 27017)
 With a single instance of MongoDB, we can use multiple independent databases. 
 Using PyMongo, we can access databases via attribute style accss on MongoClientInstancs.
 
-```py
+```python
 mydb = client.test_database_1
 mydb = client['test_database_1']
 ```
@@ -21,7 +21,7 @@ mydb = client['test_database_1']
 A collection is a group of documents stored in MongoDB. It is eq to a table in a RDBMS.
 We can access a collection in PyMongo the same as we access a database
 
-```py
+```python
 my_collection = mydb.test-database-1
 my_collection = mydb['test-database-1']
 ```
@@ -31,7 +31,7 @@ BSON, like JSON, supports the embedding of objects and arrays within other objec
 
 ### Document Insert
 Use the **insert()** method to insert a document into the collection
-```py
+```python
 import datetime
 myrecord = {"author": "Duke",
           "title" : "PyMongo 101",
