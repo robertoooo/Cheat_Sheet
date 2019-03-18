@@ -45,5 +45,34 @@ At the **insert()**, a special key, **_id** is automatically added
 if the document do not already contain an **_id** key which must be unique across the collectio.
 
 
+### Querying List of Documents - find()
+To get more than a single document as the result of a query we use the **find()** method. 
+**find()** returns a Cursor instance, which allows us to iterate over all matching documents.
+```python
+for post in mydb.mytable.find():
+    print(post)
+```
+
+We can also pass a document to **find()** to limit the returned results.
+```python
+for post in mydb.mytable.find({"author": "Adja"}):
+``` 
+
+### count() & drop() & sort() & Range
+**count()** when we just want to know how many documents match a query
+**drop()** when we want to delete documents from the collection.
+**sort()** sorts the result on a key name
+
+```python
+mydb.posts.count() #Counts all the documents that match the query, in this case all documents in collection posts.
+mydb.posts.drop() #Removes all the documents in the collection posts.
+``` 
+
+Let's perform a query where we limit results to posts older than a certain date
+```python
+for post in mydb.mytable.find({"date": {"$lt": datetime.datetime(2015, 12, 1)}}).sort("author"):
+    print (post)
+```
+Where "$lt": means lower then.  
 
 
