@@ -1,4 +1,7 @@
 # Python with MongoClient
+Database - Collection - Document - Field
+A databas can contain multiple collections which can contain multiple document. 
+Each document can contain muliple fields with more nested fields.
 
 ### Create a MongoClient against the running mongod instance
 
@@ -89,3 +92,31 @@ result = collection.replace_one(
                 } 
         ) 
 ```
+
+---
+
+## Update Specific Fields of documents
+Replace is used to replace a whole document, when using replace we must specify all the fields.
+Update can be used for the same reasen, however update also enables us to replace specific fields inside a document.
+
+### Replacing field values of a document using the $set operator
+The *$set* operator will override the old value of a specific field.
+
+```python
+db.customers.update(
+{"firstname": "Max"}, #Finding the first document with the fieldname "firstname" and the value "Max"
+  {
+    $set: {
+      "lastname": "Maier"
+      "address.street" : "another street"
+    }
+  },
+{"multi": true} #Set this to update specific fields of multiple documents
+} 
+```
+
+#### Increment numeric field values of document using the $inc operator
+For numerical values it is possible to modify the value regarding their old value.
+
+[Source](https://specify.io/how-tos/mongodb-update-documents)
+
