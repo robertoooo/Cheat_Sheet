@@ -14,6 +14,7 @@
 * **reduce:** Lets you write a function that combines all different values for a given key value (Summation/Aggregate)
 
 **Nothing actually happens in your driver program until an action is called!**
+
 ---
 
 ### key/value RDD
