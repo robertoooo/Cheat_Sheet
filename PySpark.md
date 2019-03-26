@@ -1,3 +1,12 @@
+## Transforming RDD
+**map:** Transform a set of datda given a function, one-to-one relationship. The new RDD will have just as many entries as the original RDD.
+
+**flatmap:** 
+filter
+distinct
+sample
+union, intersection
+
 
 
 ### key/value RDD
