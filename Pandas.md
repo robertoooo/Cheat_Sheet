@@ -21,5 +21,5 @@
 
 #Multivariate Plots
 * scatter_matrix(df) #Pairplots to spot structured relationsships between input variables
-
+* ax = sns.heatmap(df.corr()) #Heatmap of the correlation matrix of all attributes.
 ```
