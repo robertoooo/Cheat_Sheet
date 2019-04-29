@@ -23,3 +23,12 @@
 * scatter_matrix(df) #Pairplots to spot structured relationsships between input variables
 * ax = sns.heatmap(df.corr()) #Heatmap of the correlation matrix of all attributes.
 ```
+
+## Aggregating the data
+``` py 
+#isin cover multiple values and returns a true/false value while iloc returns the whole instance
+#use in combination to return multiple instances, the isin will return a mask that is used in the iloc
+* df[df['serie'].isin(values_to_keep)] #Keeps all the instances including values to keep of the attribute serie.
+* df.loc[df['serie'] == value_to_keep] #Keeps all the instances including the value 
+
+```
