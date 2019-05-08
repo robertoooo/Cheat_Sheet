@@ -39,3 +39,6 @@
 import pandas_profiling
 pandas_profiling.ProfileReport(df)
 ```
+#### Good ways to plot and visualize the data
+[Generating WordClouds](https://www.datacamp.com/community/tutorials/wordcloud-python)
+
