@@ -32,3 +32,10 @@
 * df.loc[df['serie'] == value_to_keep] #Keeps all the instances including the value 
 
 ```
+
+## Pandas Profiling
+#### This is magic
+``` py
+import pandas_profiling
+pandas_profiling.ProfileReport(df)
+```
