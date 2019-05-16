@@ -10,7 +10,7 @@
 
 #Class distribution
 * pd.groupby('series').size() #Look at the number of instances that belong to each attribute.
-* df['serie'].value_counts() #The most common instances of an attribute in decending order
+* df['serie'].value_counts(normalize = True) #The most common instances of an attribute in decending order (normalize is optional)
 ```
 
 ## Visualizing the data
