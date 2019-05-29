@@ -5,8 +5,13 @@ set varname #Display the value of the variable varname
 set varname=value #Set or change the valeu of varname
 ```
 
-## Grep/Find
+## Basic Commands
 ```sh
-findstr name #Finds name of stdout
+
+dir #ls
+
+findstr name #grep
   -i: not case-sensitive
+  
+type file.txt #cat
 ```
