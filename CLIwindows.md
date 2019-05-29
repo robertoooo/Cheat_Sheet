@@ -16,6 +16,10 @@ findstr name #grep
 type file.txt #cat
 ```
 
+## Hotkeys
+F3: Print the previous command
+F7: Get the history in a list where you can choose any previous command
+
 ## Setup VS code 
 Add the following to the path variable and run code to open pwd folder in VS
   C:\Users\username\AppData\Local\Programs\Microsoft VS Code\bin
