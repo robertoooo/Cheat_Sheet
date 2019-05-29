@@ -6,5 +6,7 @@ set varname=value #Set or change the valeu of varname
 ```
 
 ## Grep/Find
+```sh
 findstr name #Finds name of stdout
   -i: not case-sensitive
+```
