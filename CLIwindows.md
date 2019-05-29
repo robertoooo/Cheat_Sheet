@@ -15,3 +15,7 @@ findstr name #grep
   
 type file.txt #cat
 ```
+
+## Setup VS code 
+Add the following to the path variable and run code to open pwd folder in VS
+  C:\Users\username\AppData\Local\Programs\Microsoft VS Code\bin
