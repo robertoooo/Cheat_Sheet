@@ -10,6 +10,7 @@
 
 #Class distribution
 * pd.groupby('series').size() #Look at the number of instances that belong to each attribute.
+* df['cars_series'] = df.groupby('name')['car'].transform(lambda x: ','.join(x)) #Add all cars for each name (remove dublicates after) 
 * df['serie'].value_counts(normalize = True) #The most common instances of an attribute in decending order (normalize is optional)
 ```
 
@@ -32,6 +33,8 @@
 * df.loc[df['serie'] == value_to_keep] #Keeps all the instances including the value 
 
 ```
+
+## List Comprehension
 
 ## Pandas Profiling
 #### This is magic
