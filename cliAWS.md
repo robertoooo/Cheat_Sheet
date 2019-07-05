@@ -25,4 +25,7 @@ aws es create-elasticsearch-domain --domain-name "elastic" --elasticsearch-versi
 ## Chalice
 ```sh
 chalice new project #Creates a new chalice project
+
+chalice local #Run the app locally
+chalice deploy #Deploy the app to a lambda function
 ```
