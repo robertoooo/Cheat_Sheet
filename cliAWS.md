@@ -20,3 +20,9 @@ Setup an ES service, setup the env variables ARN_ID & MY_IP
 aws es create-elasticsearch-domain --domain-name "elastic" --elasticsearch-version "6.0" --elasticsearch-cluster-config InstanceType="t2.small.elasticsearch",InstanceCount=1,DedicatedMasterEnabled=false,ZoneAwarenessEnabled=false --ebs-options EBSEnabled=true,VolumeType="gp2",VolumeSize=10 --access-policies "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::"$AWS_ARN_ID":root\"},\"Action\":\"es:*\",\"Resource\":\"arn:aws:es:us-east-1:"$AWS_ARN_ID":domain/elastic/*\"},{\"Sid\":\"\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Action\":\"es:*\",\"Resource\":\"arn:aws:es:us-east-1:"$AWS_ARN_ID":domain/elastic/*\",\"Condition\":{\"IpAddress\":{\"aws:SourceIp\":[\""$MY_IP_ADDRESS"\"]}}}]}"
 
 ```
+
+
+## Chalice
+```sh
+chalice new project #Creates a new chalice project
+```
