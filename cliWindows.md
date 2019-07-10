@@ -20,6 +20,9 @@ findstr name #grep
   -i: not case-sensitive
   
 type file.txt #cat
+
+del file.txt #rm Remove file
+rmdir dir #rm Remove directory
 ```
 
 ## Hotkeys
