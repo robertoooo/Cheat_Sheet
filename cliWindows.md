@@ -9,6 +9,11 @@ Presistant setup
 ```sh
 setx varname value #Set or change the valeu of varname
 ```
+Use Env var to change directory (find the aws credential file) 
+```sh
+cd "%UserProfile%\.aws"
+
+```
 
 
 ## Basic Commands
