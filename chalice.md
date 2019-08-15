@@ -18,3 +18,8 @@ chalice deploy --no-autogen-policy #Using a custom policy is optional
 
 ```
 
+Run in local mode 
+```sh
+chalice local #Run the app locally
+```
+
