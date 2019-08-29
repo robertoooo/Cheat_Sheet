@@ -40,13 +40,15 @@ git merge master //If you are in another branch, you will fetch master and rebas
 
 ```
 
-### Status of remote origin/URL
+### Status of remote origin/URL, Remove origin
 ```shell class:"lineNo"
 
-git reflog //See all the recent changes  
+
 git remote show origin //Full output of remote repo 
 git config --get remote.origin.url //Get the remote URL (offline)
 
+git remote -v //View current remotes
+git remote rm origin //Remove the origin remotes 
 
 ```
 
@@ -56,6 +58,8 @@ git config --get remote.origin.url //Get the remote URL (offline)
 #Reload a file from git
 git checkout \path\filename	//Get the filepath and name from git status
 
+
+git reflog //See all the recent changes  
 
 ```
 
