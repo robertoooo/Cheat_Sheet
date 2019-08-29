@@ -11,9 +11,10 @@ My sheet sheets for different applications and languages
 git remote add origin remote repository URL
 git pull origin master 
 
-# Add and Commit the things you have done 
-1. git add (The things you want to push)
-2. git commit -m ""		//Commit the Changes	
+#To push to the master
+git add . //Add all the changes
+git commit -m "With these changes I have" //Commit the changes to the origin 
+git push origin master //Push the changes from origin (local) to master 	
 
 ```
 
@@ -27,12 +28,6 @@ git pull origin master
 
 #Push the new origin to the master 
 5. git push origin master// Push the changes to the master
-
-#To push to the master
-git add . //Add all the changes
-git commit -m "With these changes I have" //Commit the changes to the origin 
-git push origin master //Push the changes from origin (local) to master 
-
 
 #####################################
 #Mergin branches (test branch into master)
@@ -49,11 +44,9 @@ git merge master //If you are in another branch, you will fetch master and rebas
 ```shell class:"lineNo"
 
 git reflog //See all the recent changes  
+git remote show origin //Full output of remote repo 
+git config --get remote.origin.url //Get the remote URL (offline)
 
-
-#See what branch you are on 
-git branch -a 
-git checkout sound_branch //Change to the branch sound branch 
 
 #Reload a file from git
 git checkout \path\filename	//Get the filepath and name from git status
@@ -61,7 +54,7 @@ git checkout \path\filename	//Get the filepath and name from git status
 
 ```
 
-### Creating a new Branch
+### Branches, Creating, Status 
 ```shell class:"lineNo"
 
 #####################################
@@ -70,6 +63,11 @@ git checkout -b [name_of_your_new_branch] //Create the branch on your local mach
 git checkout [name_of_your_new_branch]		//Switch to another branch 
 git push origin [name_of_your_new_branch]	//Push to the new branch 
 git branch //see the active branches 
+
+
+#See what branch you are on 
+git branch -a 
+git checkout sound_branch //Change to the branch sound branch 
 
 
 ```
