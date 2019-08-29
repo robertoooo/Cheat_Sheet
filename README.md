@@ -40,13 +40,18 @@ git merge master //If you are in another branch, you will fetch master and rebas
 
 ```
 
-### Various Commands
+### Status of remote origin/URL
 ```shell class:"lineNo"
 
 git reflog //See all the recent changes  
 git remote show origin //Full output of remote repo 
 git config --get remote.origin.url //Get the remote URL (offline)
 
+
+```
+
+### Various Commands
+```shell class:"lineNo"
 
 #Reload a file from git
 git checkout \path\filename	//Get the filepath and name from git status
