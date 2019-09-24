@@ -63,7 +63,7 @@ git reflog //See all the recent changes
 
 ```
 
-### Branches, Creating, Status 
+### Branches, Creating, Status, Diff
 ```shell class:"lineNo"
 
 #####################################
@@ -78,5 +78,6 @@ git branch //see the active branches
 git branch -a 
 git checkout sound_branch //Change to the branch sound branch 
 
+git diff master remotes/origin/master //Compare the local and remote master 
 
 ```
