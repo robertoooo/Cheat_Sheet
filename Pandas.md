@@ -44,3 +44,7 @@ pandas_profiling.ProfileReport(df)
 ```
 #### Good ways to plot and visualize the data: [Generating WordClouds](https://www.datacamp.com/community/tutorials/wordcloud-python)
 
+## One Hot Encoder
+```py
+pd.get_dummies(Serie, prefix="name_of_serie")
+```
