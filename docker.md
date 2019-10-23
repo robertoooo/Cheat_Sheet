@@ -1,5 +1,5 @@
 ### Basic docker commands
-```powershell
+```cli
 
 docker pull ubuntu
 
