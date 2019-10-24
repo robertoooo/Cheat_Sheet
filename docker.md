@@ -1,5 +1,5 @@
 ### Basic docker commands
-```sh
+```Docker
 docker pull ubuntu
 
 docker images #list all images
