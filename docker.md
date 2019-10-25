@@ -10,8 +10,7 @@ docker image build -t imagename:1.0 . #Builds an image from a dockerfile
 
 docker run -ti imagename:tag  #Builds and run the container t:tty i:interactive
 
-
-docker exec -ti 72ca2488b353 bash #Enter already running container with bash 
+docker exec -ti [container-id] bash #Enter already running container with bash 
 ```
 
 # Dockerfile
