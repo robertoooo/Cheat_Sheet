@@ -8,7 +8,10 @@ docker ps -a #-a: all
 
 docker image build -t imagename:1.0 . #Builds an image from a dockerfile
 
-docker run -ti imagename:tag  #Builds and run the container t:tty i:interactive
+docker run -ti imagename:tag  #Builds and run the container 
+  -t #tty 
+  -i #interactive
+  -p 8080:8080 #expose a port to the host fron the container
 
 docker exec -ti [container-id] bash #Enter already running container with bash 
 ```
