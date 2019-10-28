@@ -64,7 +64,7 @@ WORKDIR Set the path where the command, defined with CMD, is to be executed.
 
 
 # Push an Image into Amazon ECR with Docker
-```Docker
+```powershell
 aws ecr get-login --region eu-west-1 > text.txt #Get the ecr credentials
 docker login -u AWS https://aws_account_id.dkr.ecr.eu-west-1.amazonaws.com #Login to ECR with docker
 aws ecr create-repository --repository-name nameofrep #Create new repository
@@ -74,7 +74,7 @@ docker push aws_account_id.dkr.ecr.eu-west-1.amazonaws.com/centos:6.6 #Push the 
 ```
 
 ### Delete image or repository 
-```Docker
+```powershell
 aws ecr batch-delete-image --repository-name centos --image-ids imageTag=6.6 #Delete Image
 aws ecr delete-repository --repository-name centos #Delete Repository
 ```
