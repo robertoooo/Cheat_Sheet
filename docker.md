@@ -10,10 +10,12 @@ docker ps #View all active containers
 
 docker image build -t imagename:1.0 . #Builds an image from a dockerfile
 
-docker run -ti imagename:tag  #Builds and run the container 
+docker run -ti imagename:tag  #Builds and run the container interactive
   -t #tty 
   -i #interactive
   -p 8080:8080 #expose a port to the host fron the container
+  
+docker run -d -p 5000:5000 flask-tutorial #Builds and run the container in the bakground 
 
 docker exec -ti [container-id] bash #Enter already running container with bash 
 ```
