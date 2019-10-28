@@ -22,8 +22,9 @@ docker exec -ti [container-id] bash #Enter already running container with bash
 
 ### Docker Monitoring
 ```Dockerfile
-docker logs [container-ID] #Prints the stdout/stderr of the docker container
-docker service logs # Prints stdout/stderr about all the containers related to the service
+docker logs [container-ID] #Fetch stdout/stderr of the docker container
+docker service logs #Fetch stdout/stderr about all the containers related to the service
+docker inspect <containerNameOrId> #Return low-level information on Docker objects
 
 ```
 
