@@ -4,7 +4,9 @@ docker pull ubuntu
 
 docker images #list all images
 
-docker ps -a #-a: all 
+docker ps #View all active containers 
+  -a #all 
+  -q #quiet, only displys numeric IDs.
 
 docker image build -t imagename:1.0 . #Builds an image from a dockerfile
 
