@@ -83,7 +83,7 @@ Source: https://blog.dbi-services.com/how-to-push-an-image-into-amazon-ecr-with-
 
 # Create ECS Cluster
 ```powershell
-aws ecs create-cluster --cluster-name Alexmodel-Cluster #Create a cluster in ECS
+aws ecs create-cluster --cluster-name name-of-cluster #Create a cluster in ECS
 
 #Cloudwatch log group, important to monitor fargate containers
 aws logs create-log-group --log-group-name mythicalmysfits-logs #Create new log group in cloudwatch
