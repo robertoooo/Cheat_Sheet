@@ -79,3 +79,15 @@ aws ecr batch-delete-image --repository-name centos --image-ids imageTag=6.6 #De
 aws ecr delete-repository --repository-name centos #Delete Repository
 ```
 Source: https://blog.dbi-services.com/how-to-push-an-image-into-amazon-ecr-with-docker/
+
+
+# Create ECS Cluster
+```powershell
+aws ecs create-cluster --cluster-name Alexmodel-Cluster #Create a cluster in ECS
+
+#Cloudwatch log group, important to monitor fargate containers
+aws logs create-log-group --log-group-name mythicalmysfits-logs #Create new log group in cloudwatch
+
+
+
+```
