@@ -130,3 +130,50 @@ tail -f file #Följer slutet på en fil som ändras
   # Visar data som skrivs till filen
   # Används för att titta på filer som ändras ofta, ex. Log filer
 ```
+
+### Information om grupper och användare
+```bash
+getent group groupname		#Hämtar information från /etc/group
+getent passwd username 	#Hämtar information från /etc/passwd
+
+
+```
+
+### Hitta filer och katalger
+```bash
+find #Hittar rekursivt filer i sökvägen
+ # Om inga argument ges till find, hittar den alla filer i sökvägen (pwd)
+ # find kommandot har många olika alternativ/flaggor som kan användas för att reducera djupet på sökningen 
+
+locate #Använder sig av en databas för att hitta filer vilket gör locate mycket snabbare
+ # databasen uppdateras en gång om dagen, vilket gör att denna sökning inte alltid är färsk
+ # För att uppdatera databasen manuellt: sudo updatedb 
+
+
+find . -name ”bin”	#Söker efter filen/katalogen bin i din nuvarande sökväg
+find . -iname ”Bin”	#Ej skiftlägeskänsligt (case sensetive)  
+find . -ls #Kör find med ls -l, listar en detaljerad lista av filer och kataloger som find hittar
+
+find . -type d -exec chmod 775 {} + #Ändrar behörigheter på alla kataloger i sökvägen
+
+
+
+```
+
+
+### Kopiera och flytta filer
+```bash
+cp source_file destination_file
+cp source_file destination_directory
+cp -r source_directory destination_directory
+
+
+mv source destination
+
+```
+
+
+```
+
+
+
