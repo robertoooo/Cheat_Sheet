@@ -53,6 +53,8 @@ echo $PWD
 echo $HOME
 echo $PATH
 
+printenv #Skriv ut alla miljövariabler
+
 ```
 
 
