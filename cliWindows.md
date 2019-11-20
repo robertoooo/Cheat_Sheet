@@ -14,6 +14,10 @@ Use Env var to change directory (find the aws credential file)
 cd "%UserProfile%\.aws"
 
 ```
+Change directory to env variable 
+```sh
+cd %ENV_VARIABLE%
+```
 
 
 ## Basic Commands
