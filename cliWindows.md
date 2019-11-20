@@ -24,6 +24,7 @@ cd %ENV_VARIABLE%
 ```sh
 
 dir #ls
+start . #opens the pwd folder
 
 findstr name #grep
   -i: not case-sensitive
