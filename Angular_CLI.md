@@ -36,4 +36,6 @@ npm start/serve
 ```shell
 ng build 		
   --aot #Build using Ahead of Time compilation (default=false)
+  
+ng version #see angular version
 ```
