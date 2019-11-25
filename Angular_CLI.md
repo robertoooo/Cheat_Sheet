@@ -26,13 +26,14 @@ ng generate module app-routing --flat --module=app	    #Generate a new module ap
     
 ```
 
-**#Initialize existing project (git).**
+**Initialize existing project (git).**
 ```shell
 npm install
 npm start/serve 
+npm install @angular/cli@x.x.x #Installs the x.x.x version of angular, leave empty for latest
 ```
 
-**#Create a project build**
+**Create a project build**
 ```shell
 ng build 		
   --aot #Build using Ahead of Time compilation (default=false)
