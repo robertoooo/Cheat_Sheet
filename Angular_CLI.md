@@ -31,3 +31,9 @@ ng generate module app-routing --flat --module=app	    #Generate a new module ap
 npm install
 npm start/serve 
 ```
+
+**#Create a project build**
+```shell
+ng build 		
+  --aot #Build using Ahead of Time compilation (default=false)
+```
