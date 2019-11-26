@@ -5,6 +5,7 @@ stages:
   - test
 
 build the car:
+  image: node
   stage: build
   script:
     - mkdir build
