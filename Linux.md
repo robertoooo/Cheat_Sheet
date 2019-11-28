@@ -170,12 +170,44 @@ cp source_file destination_directory
 cp -r source_directory destination_directory
 
 
-mv source destination
+mv source destination #Flytta en katalog från source path till destination path
+mv /home/it /home/groups/it
 
 ```
 
 
+### Fildiskriptorer (STDIN, STDOUT, STDERR)
+```bash
+echo hej 1> /dev/pts/x #Skickar hej till terminal x stdout
+echo hej 2> /dev/dev/null #Skickar stderr till /dev/null
+
+```
+
+### Söka efter text i en fil (grep)
+```bash
+grep hej nyfil #Söker efter hej i filen nyfil
+◦ -i Ignorerar stor/liten bokstav
+◦ -c Räknar förekomsten av dit sök mönster i en fil
+◦ -n Skriver ut rad nummer
+◦ -v Inverterar sökningen, skriver ut de rader som ej matchar
+◦ -w Matchar exakt ditt sökord
+```
+
+### Miljövariabler
+En miljövariable är en key/value pair
+```bash
+printenv #Skriver ut alla miljövariabler 
+echo $HOME = printenv HOME #Skiruver ut en miljövariable
+
+export TZ = ”Europe/Stockholm” #Exporterar en miljövariabel (bara i din terminal)
+unset TZ #Tar bort miljövarabel 
+``` 
+bashrc är ett shellscript som initieras när du öppnar en ny terminal.
+För att lägga till en miljövariable i alla terminaler lägger du till den i ~/.bashrc.
+Tänk på att bashrc är personlig och varje användare har en egen bashrc.
+```shell
+vi ~/.basrc #För att redigera initieringsscriptet för den inloggade användaren
 ```
 
 
-
+### Processer och Jobb kontroll 
