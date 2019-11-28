@@ -211,3 +211,30 @@ vi ~/.basrc #För att redigera initieringsscriptet för den inloggade användare
 
 
 ### Processer och Jobb kontroll 
+```bash
+ps -e #Visar alla aktiva processer i ett Linuxsystem med ett generiskt Linuxformat
+ps -eH #Visar alla aktiva processer i ett processträd
+ps -f #Listar terminalens processer i fullt format
+ps -ef #Listar alla aktiva process i fullt format
+
+ps -ef | grep pts #Visar alla processer som innehåller pts, dvs alla aktiva terminaler 
+
+
+ps -u användarnamn #Visar en användares processer
+
+
+kill PID #Dödar en process där PID är processID (-9 #Force kill)
+
+```
+
+### Bakgrund och Förgrund processer 
+```bash
+jobs #Se vilka jobb som befinner sig i bakgrunden
+kill %1 #Dödar jobbnummer 1
+fg %1 #Lägger jobbnummer 1 i förgrunden
+fg #Lägger det senaste jobbet i förgrunden
+
+```
+
+
+# Föreläsning 8 Kommer inom kort!!
