@@ -15,5 +15,20 @@ serverless config credentials --provider aws --key XXX --secret YYY --profile se
 #### Create and deploy a serverless service
 ```sh
 sls create --template aws-python --path hellow-world-python
-sls deploy -v #v:verbose
+sls deploy -v #Deploys a serverless service with the whole stack
+
+sls deploy function -f hello #Deploys a single function from the service
+
+
+```
+
+#### Invoke function from CLI
+```sh
+sls invoke -f hello -l #-f:function -l:output logging data
+
+```
+
+#### Monitor the logs
+```sh
+sls logs -f hello -t #Logs the function hello and tails it
 ```
