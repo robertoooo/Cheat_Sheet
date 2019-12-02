@@ -51,6 +51,10 @@ provider:
         - "lambda:*"
       Resource:
         - "*"
+        
+   environment: #Put env variables for all functions, also possible to put in "functinos"
+    variable1: value1
+    FIRST_NAME: "ROBERT"
   
   
 functions:
@@ -62,6 +66,8 @@ functions:
     handler: handler.hello
     memorySize: 256
     timeout: 6
+    environment: #Put env variables for all functions, also possible to put in "functinos"
+      FIRST_NAME: "Not_ROBERT"
 ```
 Structure of a .yml file
 ```yml
