@@ -45,6 +45,13 @@ provider:
   memorySize: 256 #The standard for the lambda if not specified on specific functinos
   timeout: 6
   
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "lambda:*"
+      Resource:
+        - "*"
+  
   
 functions:
   hello-short-timeout:
@@ -74,4 +81,8 @@ comment: >
   comment, will be 
   represented as 
   one line
+  
+  
+  
+
 ```
