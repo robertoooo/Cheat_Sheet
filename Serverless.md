@@ -42,7 +42,19 @@ provider:
   runtime: python2.7
   profile: serverless-admin #Or any other role that you want to specify
   region: eu-west-1
+  memorySize: 256 #The standard for the lambda if not specified on specific functinos
+  timeout: 6
   
+  
+functions:
+  hello-short-timeout:
+    handler: handler.hello
+    memorySize: 128
+    timeout: 3
+  hello-long-timeout:
+    handler: handler.hello
+    memorySize: 256
+    timeout: 6
 ```
 Structure of a .yml file
 ```yml
