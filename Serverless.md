@@ -35,6 +35,7 @@ sls logs -f hello -t #Logs the function hello and tails it
 
 
 # .yml File
+Serverless .yml file 
 ```yml
 provider:
   name: aws
@@ -42,4 +43,23 @@ provider:
   profile: serverless-admin #Or any other role that you want to specify
   region: eu-west-1
   
+```
+Structure of a .yml file
+```yml
+nested-value-pair:
+  name : Robert
+  family: Betto
+  address-multi-line string: | 
+    Hejvägen 1
+    Stockholm
+
+product-list:
+  - price: 10
+    name: orange
+    description: fruit
+comment: > 
+  This is a long 
+  comment, will be 
+  represented as 
+  one line
 ```
