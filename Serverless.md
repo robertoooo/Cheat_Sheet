@@ -55,8 +55,8 @@ nested-value-pair:
 
 product-list:
   - price: 10
-    name: orange
-    description: fruit
+  - name: orange
+  - description: fruit
 comment: > 
   This is a long 
   comment, will be 
