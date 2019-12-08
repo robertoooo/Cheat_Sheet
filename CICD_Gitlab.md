@@ -42,7 +42,7 @@ https://docs.gitlab.com/runner/register/index.html
 # Gatsby CLI
 Host a very easy unsecure website on the Internet
 ```cli
-npm install -g gatsby-cli 
+npm install -g gatsby-cli #-g: global install
 gastby new gastby-site    #Create a new site
 
 
