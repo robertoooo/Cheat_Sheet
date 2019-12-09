@@ -39,6 +39,7 @@ Serverless .yml file
 ```yml
 provider:
   name: aws
+  
   runtime: python2.7
   profile: serverless-admin #Or any other role that you want to specify
   region: eu-west-1
@@ -69,7 +70,16 @@ functions:
     environment: #Put env variables for all functions, also possible to put in "functinos"
       FIRST_NAME: "Not_ROBERT"
 ```
-Structure of a .yml file
+
+### Plugins for python to install all dependencies in the requirements.txt
+This will install all the dependencies that is placed in the file requirements.txt in the root folder of the service.
+```yml
+plugins:
+  - serverless-python-requirements
+```
+
+
+### Structure of a .yml file
 ```yml
 nested-value-pair:
   name : Robert
