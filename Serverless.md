@@ -71,6 +71,27 @@ functions:
       FIRST_NAME: "Not_ROBERT"
 ```
 
+### Environmental Variable 
+An S3 bucket 
+```yml
+
+custom:
+  bucket: stephane-s3-thumbnail-generator
+  pythonRequirements:
+    dockersizePip: true
+
+functions:
+  s3-thumbnail-generator:
+    handler: handler.s3_thumbnail-generator
+    events:
+      - s3:
+        bucket: ${self:custom.bucket}         #Env variable pointing to slef (this document) and then custom.bucket name
+        event: s3:ObjectCreated:*             #Triggered when an object is created
+        rules:
+          - suffix: .png                      #With the rule that the file must end with .png
+
+```
+
 ### Plugins for python to install all dependencies in the requirements.txt
 This will install all the dependencies that is placed in the file requirements.txt in the root folder of the service.
 ```yml
