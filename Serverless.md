@@ -4,6 +4,8 @@ First install Node.js
 npm install -g serverless #Installs Serverless Framework
 serverless --version #See if the framework is installed
 
+sls plugin install -n serverless-python-requirements        #Enables installing libaries
+
 ```
 
 #### Setup the AWS Credentials
