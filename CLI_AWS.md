@@ -14,6 +14,12 @@ aws --profile #Run AWS commands with a specific user
 aws s3 ls #See what buckets are available
 ```
 
+Setup the credentials using a shared credential file
+```sh
+AWS_SHARED_CREDENTIALS_FILE = .aws\credentials
+AWS_SHARED_CREDENTIALS_FILE=C:\Users\RYXTHX\.aws\credentials  #WINDOWS
+```
+
 
 Setup an ES service, setup the env variables ARN_ID & MY_IP
 ```sh
