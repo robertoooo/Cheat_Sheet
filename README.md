@@ -81,3 +81,13 @@ git checkout sound_branch //Change to the branch sound branch
 git diff master remotes/origin/master //Compare the local and remote master 
 
 ```
+
+
+### Hotkeys
+C:\Programs\Git\etc\profile.d\aliases.sh
+```shell
+alias st='git status'
+alias co='git checkout'
+alias aa='git add .'
+alias push='git push origin master'
+```
