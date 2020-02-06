@@ -237,4 +237,76 @@ fg #Lägger det senaste jobbet i förgrunden
 ```
 
 
-# Föreläsning 8 Kommer inom kort!!
+### Insatllera Paket
+RPM baserade distros
+```bash
+yum search inkspace #Söker efter paketet inkspace
+yum info inkspace #Visare information om inkspace
+yum install inkspace #Installerar inkspace
+yum remove inkspace #Avinstallerar inkspace
+yum update #För att uppdatera alla dina paket 
+rpm -q inkspace #För att kontrollera ifall något är installerat
+
+
+```
+dpkg baserade distros
+```bash
+apt-get search inkspace #Söker efter paketet inkspace
+apt show inkspace or apt-cache inkspace (old) #Visar information om inkspace
+apt-get install inkspace #Installerar inkspace
+apt-get remove inkspace #Avinstallerar inkspace
+apt-get update #För att uppdatera alla dina paket
+dpkg -l inkspace #För att kontrollera ifall något är installerat 
+```
+
+## Nätverkssäkerhet
+
+### Netcat
+```bash
+nc -l 1234 #lyssna på port 1234 med nc
+nc 127.0.0.1 1234 #koppla upp oss till den porten 
+```
+
+### IPtables
+```bash
+iptables -L #Listar alla filter rules
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT #Lägger till på INPUT kedjan, accepterar alla tcp paket på port 80 (HTTP)
+iptables -L #Se den nyligen tillagda regeln
+iptables -nL #Se port 80 istället för http på den utskrivna regeln
+iptables -A INPUT -p tcp --dport 80 -s 10.0.0.0/24 -j ACCEPT #Lägger till INPUT kedjans alla tcp paket som kommer från ip adressen 10.0.0.0/24 på port 80 (HTTP)
+iptables -A INPUT -j DROP #Droppar alla paket i slutet av kedjan
+iptables -nL --line-numbers #Visa reglerna med nummer
+iptables -D INPUT 2 #Tar bort regel nummer 2 på kedjan INPUT
+netfilter-persistent save #Spara din konfiguration inför omstart
+```
+
+### systemctl
+```bash
+systemctl reload sshd #Vi startar om ssh daemon
+systemctl #Visar aktiva tjänster
+systemctl stop SERVICE #Stoppar SERVICE, funkar igen efter omstart
+systemctl disable SERVICE #Stänger av SERVICE, startar inte vid omstart
+```
+
+
+### netstat
+```bash
+netstat -ntp #(Kör som root)
+# n: Visar i numeriskt format
+# u: Inkluderar udp protokoll
+# t: Inkludera tcp protokoll
+# l: Visa bara sockets som lyssnar
+# p: Visa pid (process ID) och namnet på processen som lyssnar
+# 0.0.0.0:68 lyssnar på alla ip adresser
+
+```
+
+### nmap
+```bash
+nmap x.x.x.x
+# Scanna IP adressen för info.
+nmap -nL 10.0.0.1/24 #List scan av alla adresser på nätverket
+nmap -sn 10.0.0.1/24 #Ping scan av alla adresser på nätverket
+nmap -Pn 10.0.0.1/24 #Behandla alla värdar som online, tar lång tid!
+# Alla ovanstående kommandon kan också köras på en specifik adress eller mindre antal adresser. 
+```
