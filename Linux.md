@@ -308,5 +308,23 @@ nmap x.x.x.x
 nmap -nL 10.0.0.1/24 #List scan av alla adresser på nätverket
 nmap -sn 10.0.0.1/24 #Ping scan av alla adresser på nätverket
 nmap -Pn 10.0.0.1/24 #Behandla alla värdar som online, tar lång tid!
-# Alla ovanstående kommandon kan också köras på en specifik adress eller mindre antal adresser. 
+# Alla ovanstående kommandon kan också köras på en specifik adress eller mindre antal adresser.
+
+nmap -v -T5 -p 0-65535 -A 10.0.2.4
+#A: OS
+#T1-5 T1:Långsam T5: Snabb
 ```
+
+### TCP Wrappers
+```bash
+/etc/hosts.allow #Allow filen körs först vid försök att ansluta till en TCP
+/etc/hosts.deny #Deny filen körs efter Allow och om den matchas nekas åtkomst
+```
+
+### netdiscover
+```bash
+netdiscover -r 192.168.0.0/24
+#r: Range
+#Söker igenom subnätet 192.168.0.x
+```
+
