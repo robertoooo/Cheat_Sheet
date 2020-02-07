@@ -9,4 +9,15 @@ SELECT COUNT(*) FROM tbl -- Gives the amount of rows in tbl
 
 SELECT * FROM tbl LIMIT 5 -- Outputs the first 5 rows
 SELECT * FROM tbl ORDER BY column ASC/DESC -- Order the rows, possible to sort multiple columns
+
 ```
+
+Between, IN and LIKE
+```sql
+SELECT column1, column2 FROM tbl WHERE column1 BETWEEN low AND high 
+-- possible to use NOT also to invert and citation for strings and date
+
+
+dasd
+```
+
