@@ -29,3 +29,10 @@ SELECT column1 FROM tbl WHERE column1 LIKE 'nam%'
 -- ILIKE for case insensitivity
 ```
 
+GROUP BY
+```sql
+SELECT column1, AVG(column2)
+FROM tbl
+GROUP BY column1
+-- Segments column1 by class and presents the avg of column 2
+```
