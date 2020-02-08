@@ -12,7 +12,7 @@ SELECT * FROM tbl ORDER BY column ASC/DESC -- Order the rows, possible to sort m
 
 ```
 
-Between, IN and LIKE
+BETWEEN, IN and LIKE
 ```sql
 SELECT column1, column2 FROM tbl WHERE column1 BETWEEN low AND high 
 -- possible to use NOT also to invert and citation for strings and date
@@ -20,5 +20,11 @@ SELECT column1, column2 FROM tbl WHERE column1 BETWEEN low AND high
 
 SELECT column1 FROM tbl WHERE column1 IN (1,4,23);
 -- Filter out specific rows from the column
+
+
+SELECT column1 FROM tbl WHERE column1 LIKE 'nam%'
+-- %: matching any sequence of characters
+-- _: matching any single character
+-- ILIKE for case insensitivity
 ```
 
