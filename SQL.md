@@ -18,6 +18,7 @@ SELECT column1, column2 FROM tbl WHERE column1 BETWEEN low AND high
 -- possible to use NOT also to invert and citation for strings and date
 
 
-dasd
+SELECT column1 FROM tbl WHERE column1 IN (1,4,23);
+-- Filter out specific rows from the column
 ```
 
