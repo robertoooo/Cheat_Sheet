@@ -36,3 +36,12 @@ FROM tbl
 GROUP BY column1
 -- Segments column1 by class and presents the avg of column 2
 ```
+
+The HAVING clause sets the confition for group rows created by the GROUP BY clause after the GROUP BY clause applies while the WHERE clause sets the condition for individual rows before GROUP BY clause applies.
+```sql
+SELECT column1, COUNT(column2)
+FROM tbl
+GROUP BY column1
+HAVING COUNT(column2) > 300;
+```
+
