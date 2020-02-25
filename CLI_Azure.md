@@ -1,5 +1,5 @@
 Install the Azure CLI
-```cli
+```cmd
 py -m venv venv
 venv\Scirpts\activate
 py -m pip install --upgrade pip
