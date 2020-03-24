@@ -1,3 +1,5 @@
+### Classes, Properties & Methods
+
 ES6
 ```javascript
 class Human {
@@ -48,8 +50,8 @@ person.printGender();
 
 ```
 
-### Rest & Spread Operator
-Rest Operator for arrays and objects
+### Spread & Rest Operator
+Spread Operator for arrays and objects
 ```js
 // Spread Operator array
 const oldArray = [1, 2, 3, 4]
