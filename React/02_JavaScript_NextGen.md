@@ -85,7 +85,8 @@ console.log(filter(1,2,3));
 ```
 
 # Deconstructering
-Like spread, except here we can pull out one element instead of all
+Like spread, except here we can pull out one element instead of all.
+Possible to do with objects as well.
 
 ```js
 const numbers = [1,2,3];
