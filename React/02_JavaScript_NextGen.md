@@ -76,7 +76,7 @@ console.log(newPerson)
 ```
 ### Rest operator 
 ```js
-// Rest operator
+// Rest operator is used to have a variable number of arguments
 const filter = (...args) => { //Used to have a variable number of arguments
   return args.filter(el => el === 1); // 3 = checks for type and value 
 }
@@ -85,10 +85,12 @@ console.log(filter(1,2,3));
 ```
 
 # Deconstructering
+Like spread, except here we can pull out one element instead of all
+
 ```js
 const numbers = [1,2,3];
 
-[num1, , num3] = numbers;
+[num1, , num3] = numbers; 
 
 console.log(num1,num3);
 ```
