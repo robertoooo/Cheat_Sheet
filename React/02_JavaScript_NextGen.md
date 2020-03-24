@@ -84,3 +84,11 @@ const filter = (...args) => { //Used to have a variable number of arguments
 console.log(filter(1,2,3));
 ```
 
+# Deconstructering
+```js
+const numbers = [1,2,3];
+
+[num1, , num3] = numbers;
+
+console.log(num1,num3);
+```
