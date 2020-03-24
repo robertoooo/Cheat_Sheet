@@ -1,4 +1,4 @@
-### Classes, Properties & Methods
+## Classes, Properties & Methods
 
 ES6
 ```javascript
@@ -49,8 +49,9 @@ person.printGender();
 
 
 ```
+---
 
-### Spread & Rest Operator
+## Spread & Rest Operator
 Spread Operator for arrays and objects
 ```js
 // Spread Operator array
