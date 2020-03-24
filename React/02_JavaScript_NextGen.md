@@ -1,6 +1,6 @@
 # Classes, Properties & Methods
 
-ES6
+### ES6
 ```javascript
 class Human {
   constructor(){
@@ -25,7 +25,7 @@ const person = new Person();
 person.printMyName();
 person.printGender();
 ```
-ES7, the constructor will be created in the compilation, this way we do not need to add 'this.' to all variables we create. 
+### ES7, the constructor will be created in the compilation, this way we do not need to add 'this.' to all variables we create. 
 ```js
 class Human {
   gender = 'male';
@@ -51,7 +51,7 @@ person.printGender();
 ```
 
 # Spread & Rest Operator
-Spread Operator for arrays and objects
+### Spread Operator for arrays and objects
 ```js
 // Spread Operator array
 const oldArray = [1, 2, 3, 4]
@@ -74,7 +74,7 @@ console.log(newPerson)
 
 
 ```
-Rest operator 
+### Rest operator 
 ```js
 // Rest operator
 const filter = (...args) => { //Used to have a variable number of arguments
