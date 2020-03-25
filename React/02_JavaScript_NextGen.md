@@ -95,3 +95,26 @@ const numbers = [1,2,3];
 
 console.log(num1,num3);
 ```
+# Reference and Primitive Types
+Copying primitive types such as numbers, strings and booleans will copy the value.
+Copying reference types such as objects and arrays will copy the pointer and not the actual value.
+
+```js
+const person = {
+  name: 'Robert'
+};
+
+const secondPerson = {
+  ...person //Using the spread operator creates a real copy of the value
+};
+
+const thirdPerson = {
+  person //Copies the pointer
+};
+
+person.name = 'Xristina';
+
+console.log(secondPerson) //Logs Robert
+console.log(thirdPerson) //Logs Xristina
+
+```
