@@ -118,3 +118,18 @@ console.log(secondPerson) //Logs Robert
 console.log(thirdPerson) //Logs Xristina
 
 ```
+
+# Array Functions
+The array function map executes on each element in the numbers array. Returns a real new array.
+
+```js
+const numbers = [1,2,3];
+
+const doubleNumArray = numbers.map((num) =>{
+  return num*2; 
+});
+
+console.log(numbers); //[1,2,3]
+console.log(doubleNumArray); //[2,4,6]
+
+```
