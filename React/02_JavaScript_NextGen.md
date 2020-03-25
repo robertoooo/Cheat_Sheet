@@ -1,4 +1,4 @@
-# Classes, Properties & Methods
+## Classes, Properties & Methods
 
 ### ES6
 ```javascript
@@ -50,7 +50,7 @@ person.printGender();
 
 ```
 
-# Spread & Rest Operator
+## Spread & Rest Operator
 ### Spread Operator for arrays and objects
 ```js
 // Spread Operator array
@@ -84,7 +84,7 @@ const filter = (...args) => { //Used to have a variable number of arguments
 console.log(filter(1,2,3));
 ```
 
-# Deconstructering
+## Deconstructering
 Like spread, except here we can pull out one element instead of all.
 Possible to do with objects as well.
 
@@ -95,7 +95,7 @@ const numbers = [1,2,3];
 
 console.log(num1,num3);
 ```
-# Reference and Primitive Types
+## Reference and Primitive Types
 Copying primitive types such as numbers, strings and booleans will copy the value.
 Copying reference types such as objects and arrays will copy the pointer and not the actual value.
 
@@ -119,7 +119,7 @@ console.log(thirdPerson) //Logs Xristina
 
 ```
 
-# Array Functions
+## Array Functions
 The array function map executes on each element in the numbers array. Returns a real new array.
 
 ```js
