@@ -1,4 +1,4 @@
-# Two examples, one using the class-based and the other using the use-state-hook state manipulation.
+# Two examples, one using the class-based and the other using the functional-components (use-state-hook) state manipulation.
 
 ## Class-based state manipulation 
 ```js
@@ -44,7 +44,7 @@ class App extends Component {
 export default App;
 
 ```
-## Use-state-hook state manipulation
+## functional-components (use-state-hook) state manipulation
 ```js
 import React, { useState } from 'react';
 import './App.css';
