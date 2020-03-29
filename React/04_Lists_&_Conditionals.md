@@ -50,3 +50,45 @@ class App extends Component {
 }
 
 ```
+## Handling Dynamic Content "The JavaScript Way"
+Instead of having the condition inside the render method we put the object inside a javascript if statement outside the render method.
+
+```js
+render() {
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div >
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age} />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler.bind(this, 'Abdallah')}
+            changed={this.nameChangeHandler} > I like horses</Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age} />
+
+        </div>
+
+      );
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi I am a react acho sharmote</h1>
+        <p>This is really working </p>
+        <button
+          style={style}
+          onClick={this.togglePersonsHandler}>Switch Name</button>
+        {persons}
+
+      </div>
+    );
+  }
+
+```
