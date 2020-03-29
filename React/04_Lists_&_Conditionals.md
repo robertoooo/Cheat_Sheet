@@ -92,3 +92,11 @@ render() {
   }
 
 ```
+
+## Update State Immutably
+You should alwats update a state in an immutable fashion, meaning create a copy and change it instead of just copying the pointer.
+Using the ... spread operator is the preferred way. Persons is a list of objects. 
+```js
+const persons = this.state.persons.slice(); //Copies the full array instead of copying the pointer
+const persons = [...this.state.persons]; //Spreads out the elements in the array into a list of elements, a new array with the objects from the old array
+```
