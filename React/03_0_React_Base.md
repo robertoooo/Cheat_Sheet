@@ -4,6 +4,11 @@ npm i create-react-app -g #-g for global
 create-react-app appname #creates an app
 npm start #starts the application
 ```
+To install peer dependencies
+```js
+npm install -g npm-install-peers
+npm-install-peers
+```
 
 ## Components
 When creating components, you have the choice between **two different ways**:
