@@ -8,3 +8,27 @@ pip install azure-cli
 az login          #Login to Azure through CLI
 az account list   #List the account subscription and tenant id
 ```
+
+Create a resource group
+```sh
+az group create --location westeurope --name myResourceGroup
+az group list #List all the RG
+az group delete --name myResourceGroup
+
+```
+
+Create a Web App 
+```sh
+az appservice plan create --name name-app-service --resource-group myResourceGroup   #Creates an App Service plan.
+az webapp create            #Creates an Azure web app.
+az webapp deployment source config --name name-app-service --resource-group myResourceGroup 
+    --is-linux #To make it a Linux instance
+    #Get the details for available web app deployment profiles.
+
+az webapp deployment source config 
+  --name name-app-service 
+  --resource-group myResourceGroup 
+  --repo-url https://github.com/Azure-Samples/php-docs-hello-world 
+  --branch master 
+  --manual-integration #Disable automatic sync between source control and web. 
+```
