@@ -38,7 +38,11 @@ const cockpit = (props) => {
         console.log('[Cockpit.js] useEffect', props);
         // HTTP request, updates when component is created and updated
         // Writing something in the person box will update app which will update cockpit
-    })
+        setTimeout(() => {
+            alert('Saved data to cloud!');
+        }, 1000)
+    }, [props.persons]); //Will only update when persons change, if empty it will only run the first time
+
     
     return (
         <div>
