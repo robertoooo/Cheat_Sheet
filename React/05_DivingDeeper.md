@@ -2,8 +2,8 @@
 ![Class vs Functional Components](./pics/ClassVsFunc.png)
 
 
-## Component Lifecycle
-Components Lifecycle with class based components
+## Component Creation Lifecycle
+Components Creation Lifecycle with class based components
 ```js
 constructor(props)                      //Call super(props) Do:Set up state Don't: Cause side effects
 getDerivedStateFromProps(props,state)   //Do: Sync State Don't: Cause side effects
@@ -14,12 +14,17 @@ componentDidMount()                     //Do: Cause Side-Effects Don't: Update S
 ```
 More Class-based Components
 ```js
-getSnapshotBeforeUpdate()   
 componentDidCatch()
 componentWillUnmount()
-shouldComponentUpdate()
-componentDidUpdate()
 
 ```
+## Component Update Lifecycle
 
-
+```js
+getDerivedStateFromProps(props,state)       //Do: Sync State to Props Don't: Cause Side-Effects
+shouldComponentUpdate(nextProps,nextState)  //Do: Decide whether to Continue or Not
+render()                                    //Prepare & Structure your JSX code
+ *Update Child Component Props*             
+getSnapshotBeforeUpdate(prevProps,prevState) //Do: Last-minute DOM ops Don't: Cause Side-Effects
+componentDidUpdate()                         //Do: Cause Side-Effects Don't Update State (triggers re-render)
+```
