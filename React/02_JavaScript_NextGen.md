@@ -1,6 +1,8 @@
 ## Classes, Properties & Methods
+JavaScript - filter, map and reduce
+ES6 - arrow functions, template literals, defualt parameters, object literals. rest and spread operators and destructuring assigment.
 
-### ES6
+### ES5
 ```javascript
 class Human {
   constructor(){
@@ -25,7 +27,7 @@ const person = new Person();
 person.printMyName();
 person.printGender();
 ```
-### ES7, the constructor will be created in the compilation, this way we do not need to add 'this.' to all variables we create. 
+### ES6, the constructor will be created in the compilation, this way we do not need to add 'this.' to all variables we create. 
 ```js
 class Human {
   gender = 'male';
