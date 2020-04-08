@@ -28,3 +28,24 @@ render()                                    //Prepare & Structure your JSX code
 getSnapshotBeforeUpdate(prevProps,prevState) //Do: Last-minute DOM ops Don't: Cause Side-Effects
 componentDidUpdate()                         //Do: Cause Side-Effects Don't Update State (triggers re-render)
 ```
+
+## useEffect() in Functional components
+```js
+import React, { useEffect } from 'react';
+
+const cockpit = (props) => {
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect', props);
+        // HTTP request, updates when component is created and updated
+        // Writing something in the person box will update app which will update cockpit
+    })
+    
+    return (
+        <div>
+            <h1>{props.title}</h1>
+        </div>
+    );
+};
+
+export default cockpit; 
+```
