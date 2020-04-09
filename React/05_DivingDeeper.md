@@ -53,3 +53,18 @@ const cockpit = (props) => {
 
 export default cockpit; 
 ```
+
+This setting will only run the first time and when the component unmounts
+```js
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect', props);
+        // HTTP request, updates when component is created and updated
+        // Writing something in the person box will update app which will update cockpit
+        setTimeout(() => {
+            alert('Saved data to cloud!');
+        }, 1000);
+        return () => { //Will run this when the component unmounts 
+            console.log("[Cockpit.js] cleanup work in useEffect");
+        };
+    }, []); //Will only update when persons change, if empty it will only run the first time
+```
