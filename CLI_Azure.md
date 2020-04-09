@@ -36,6 +36,7 @@ az webapp deployment source config
 
 # Visual Studio Code
 Install the Azure CLI Tools in VSC
+Ctrl+Shift+P to access the terminal in VS Code
 ```sh
 azure sign in #Will sign you in through web to your tenant
 ```
