@@ -32,3 +32,11 @@ az webapp deployment source config
   --branch master 
   --manual-integration #Disable automatic sync between source control and web. 
 ```
+
+
+# Visual Studio Code
+Install the Azure CLI Tools in VSC
+```sh
+azure sign in #Will sign you in through web to your tenant
+```
+
