@@ -100,3 +100,36 @@ Using the ... spread operator is the preferred way. Persons is a list of objects
 const persons = this.state.persons.slice(); //Copies the full array instead of copying the pointer
 const persons = [...this.state.persons]; //Spreads out the elements in the array into a list of elements, a new array with the objects from the old array
 ```
+
+## CSS add dynamic Classes
+In the css file
+```js
+.red {
+  color: red;
+}
+.bold {
+  font-weight: bold;
+}
+```
+In the class file
+```js
+import './App.css';
+ state = {
+    persons: [
+      { id: 'ett', name: 'Betto', age: 29 },
+      { id: 'tva', name: "Xristina <3, I love you", age: 23 },
+      { id: 'tre', name: "Marwin", age: 223 }
+    ]}
+    
+render() {
+    if (this.state.persons.length <= 2){
+      classes.push('red'); //classes = ['red]
+    }
+    if (this.state.persons.length <= 1){
+      classes.push('bold'); //classes = ['red]
+    }
+ return (
+        <p className={classes.join(' ')}>YAA RABBIII</p>
+  )
+}
+```
