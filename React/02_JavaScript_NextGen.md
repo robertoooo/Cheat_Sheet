@@ -135,3 +135,9 @@ console.log(numbers); //[1,2,3]
 console.log(doubleNumArray); //[2,4,6]
 
 ```
+
+## Question mark or conditiional operator
+Is a ternary operatir that has three operands.
+```js
+condition ? value if true : value if false
+```
