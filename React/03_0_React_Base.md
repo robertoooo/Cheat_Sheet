@@ -9,6 +9,10 @@ To install peer dependencies
 npm install -g npm-install-peers
 npm-install-peers
 ```
+To see the npm config list
+```js
+npm config list 
+```
 
 ## Components
 When creating components, you have the choice between **two different ways**:
