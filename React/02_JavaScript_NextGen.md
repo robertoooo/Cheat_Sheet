@@ -141,3 +141,9 @@ Is a ternary operatir that has three operands.
 ```js
 condition ? value if true : value if false
 ```
+## For loop on an Await function 
+```js
+for (const <object> of await <listofobject>){
+  Object.assig something 
+}
+```
