@@ -70,6 +70,8 @@ const newPerson = {
   ...person, //appends person keypair of object inside a new object instead of appending an object inside an object.
   age: 27
 }
+const newPerson = Object.assign({}, person); //Same as the spread operator
+
 
 console.log(newPerson)
 
