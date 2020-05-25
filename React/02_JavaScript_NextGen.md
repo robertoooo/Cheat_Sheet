@@ -149,3 +149,11 @@ for (const <object> of await <listofobject>){
   Object.assig something 
 }
 ```
+
+## Concat and push
+```js
+results: state.results.concat(state.counter) //immutably returns a new array with pushed object/list of state.counter
+
+results: state.results.push(state.counter) //mutably pushes state.counter to the state.results array
+
+```
