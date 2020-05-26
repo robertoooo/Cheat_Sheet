@@ -152,10 +152,13 @@ for (const <object> of await <listofobject>){
 
 ## Concat and push
 ```js
-results: state.results.concat(state.counter) //immutably returns a new array with pushed object/list of state.counter
-results: state.results.push(state.counter) //mutably pushes state.counter to the state.results array
+//immutably returns a new array with pushed object/list of state.counter
+results: state.results.concat(state.counter) 
+//mutably pushes state.counter to the state.results array
+results: state.results.push(state.counter) 
 ```
 ## Filter
 ```js
-const updatedArray = state.results.filter(result => result.id !== action.resultElId); //Returns a new array, function as an input and it is executed on each element in the array.
+//Returns a new array, function as an input and it is executed on each element in the array.
+const updatedArray = state.results.filter(result => result.id !== action.resultElId); 
 ```
