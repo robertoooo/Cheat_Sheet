@@ -8,7 +8,7 @@ My sheet sheets for different applications and languages
 ```shell class:"lineNo"
 
 #Adding repository 
-git remote add origin remote repository URL
+git remote add origin <remote repository URL>
 git pull origin master 
 
 #To push to the master
