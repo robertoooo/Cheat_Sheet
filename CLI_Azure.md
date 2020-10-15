@@ -9,6 +9,13 @@ az login          #Login to Azure through CLI
 az account list   #List the account subscription and tenant id
 ```
 
+Gets the details for the currently logged-in user.
+```sh
+az ad signed-in-user show
+```
+
+
+
 Create a resource group
 ```sh
 az group create --location westeurope --name myResourceGroup
@@ -45,4 +52,9 @@ azure sign in #Will sign you in through web to your tenant
 Creates an app-service with a client secret 
 ```sh
 az ad sp create-for-rbac -n "<AppName>" --skip-assignment
+```
+
+Set policy for a specific key-vault for a specific azure client id (the app registration)
+```sh
+az keyvault set-policy --name "<MyKeyVaultName>" --spn $AZURE_CLIENT_ID --secret-permissions backup delete get list set
 ```
