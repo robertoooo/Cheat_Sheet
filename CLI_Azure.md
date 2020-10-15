@@ -54,7 +54,13 @@ Creates an app-service with a client secret
 az ad sp create-for-rbac -n "<AppName>" --skip-assignment
 ```
 
-Set policy for a specific key-vault for a specific azure client id (the app registration)
+Set key-vault/app access policy for a service prinicple (app registration) 
 ```sh
 az keyvault set-policy --name "<MyKeyVaultName>" --spn $AZURE_CLIENT_ID --secret-permissions backup delete get list set
 ```
+
+Set key-vault/app access policy for another azure application (Managed Identity)
+```sh
+az keyvault set-policy --name "<MyKeyVaultName>" --object-id "<PrincipalId>" --secret-permissions get
+```
+
