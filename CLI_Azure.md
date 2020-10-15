@@ -41,3 +41,8 @@ Ctrl+Shift+P to access the terminal in VS Code
 azure sign in #Will sign you in through web to your tenant
 ```
 
+# Create a Service provider
+Creates an app-service with a client secret 
+```sh
+az ad sp create-for-rbac -n "<AppName>" --skip-assignment
+```
