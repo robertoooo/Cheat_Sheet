@@ -83,7 +83,7 @@ az sql db show --name [db-name] | jq '{name: .name, maxSizeBytes: .maxSizeBytes,
 ```
 
 Get the connection string to a database in a format that *sqlcmd* can use
-```sh
+```sql
 az sql db show-connection-string --client sqlcmd --name [db-name]
 ```
 
