@@ -76,4 +76,19 @@ az sql db list
 az sql db list | jq '[.[] | {name: .name}]'
 ```
 
+Get details about the DB
+```sh
+az sql db show --name [db-name]
+az sql db show --name [db-name] | jq '{name: .name, maxSizeBytes: .maxSizeBytes, status: .status}'
+```
 
+Get the connection string to a database in a format that *sqlcmd* can use
+```sh
+az sql db show-connection-string --client sqlcmd --name [db-name]
+```
+
+T-SQL statement to create a table named Drivers
+```sh
+CREATE TABLE Drivers (DriverID int, LastName varchar(255), FirstName varchar(255), OriginCity varchar(255));
+GO
+```
