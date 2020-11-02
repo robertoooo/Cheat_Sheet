@@ -92,3 +92,31 @@ T-SQL statement to create a table named Drivers
 CREATE TABLE Drivers (DriverID int, LastName varchar(255), FirstName varchar(255), OriginCity varchar(255));
 GO
 ```
+
+Run the following T-SQL statement to verify that the Drivers table exists
+```sql
+SELECT name FROM sys.tables;
+GO
+```
+Add a sample row to the table. *create* operation.
+```sql
+INSERT INTO Drivers (DriverID, LastName, FirstName, OriginCity) VALUES (123, 'Zirne', 'Laura', 'Springfield');
+GO
+```
+List the *DriverID* and *OriginCity* columns from all rows in the table. *read* operation.
+```sql
+SELECT DriverID, OriginCity FROM Drivers;
+GO
+```
+
+Update the city from Springfield to Boston. *update* operation.
+```sql
+UPDATE Drivers SET OriginCity='Boston' WHERE DriverID=123;
+GO
+```
+
+Delete the record. *delete* operation.
+```sql
+DELETE FROM Drivers WHERE DriverID=123;
+GO
+```
