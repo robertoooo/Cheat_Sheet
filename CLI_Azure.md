@@ -88,7 +88,7 @@ az sql db show-connection-string --client sqlcmd --name [db-name]
 ```
 
 T-SQL statement to create a table named Drivers
-```sh
+```sql
 CREATE TABLE Drivers (DriverID int, LastName varchar(255), FirstName varchar(255), OriginCity varchar(255));
 GO
 ```
