@@ -64,3 +64,10 @@ Set key-vault/app access policy for another azure application (Managed Identity)
 az keyvault set-policy --name "<MyKeyVaultName>" --object-id "<PrincipalId>" --secret-permissions get
 ```
 
+# Azure SQL
+Set the name of your resource group and the name of your Azure SQL logical server (to save typing)
+```sh
+az configure --defaults group=[resource-group-name] sql-server=[server-name]
+```
+
+
