@@ -69,5 +69,11 @@ Set the name of your resource group and the name of your Azure SQL logical serve
 ```sh
 az configure --defaults group=[resource-group-name] sql-server=[server-name]
 ```
+List all databases on your Azure SQL logical server
+```sh
+az sql db list
+
+az sql db list | jq '[.[] | {name: .name}]'
+```
 
 
