@@ -1,3 +1,23 @@
+# Notebooks
+Magical Commands: allows us to execute code in languages other then the notebook's default.
+```sh
+%sh ps | grep 'java'
+```
+
+Markdown in a cell:
+```sh
+%md
+# Label 1
+Text
+```
+
+Run a notebook from another notebook using %run
+```sh
+%run "./Includes/Another-notebook"
+```
+
+
+# PySpark
 ## Transforming RDD
 * **map:** Transform a set of datda given a function, one-to-one relationship. The new RDD will have just as many entries as the original RDD.
 * **flatmap:** Similar to map, but has the capability to produce or reduce values. 
