@@ -1,4 +1,4 @@
-# Notebooks
+# Notebooks Basics
 Magical Commands: allows us to execute code in languages other then the notebook's default.
 ```sh
 %sh ps | grep 'java'
@@ -16,6 +16,37 @@ Run a notebook from another notebook using %run
 %run "./Includes/Another-notebook"
 ```
 
+## Databricks File System - DBFS
+Returns a collection of `MountInfo` objects, one for each mount.
+```py
+mounts = dbutils.fs.mounts()
+
+for mount in mounts:
+  print(mount.mountPoint + " >> " + mount.source)
+
+print("-"*80)
+```
+### View the contents of a specific mount
+#### Using a for loop
+```py
+files = dbutils.fs.ls("/mnt/training/")
+
+for fileInfo in files:
+  print(fileInfo.path)
+
+print("-"*80)
+```
+#### Using the display command
+```py
+files = dbutils.fs.ls("/mnt/training/")
+
+display(files)
+```
+
+Another magic command that can be used equivalent to the display command
+```sh
+%fs ls /mnt/training
+```
 
 # PySpark
 ## Transforming RDD
