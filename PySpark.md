@@ -1,4 +1,4 @@
-# Notebooks Basics
+# Apache Spark Notebook Basics
 Magical Commands: allows us to execute code in languages other then the notebook's default.
 ```sh
 %sh ps | grep 'java'
