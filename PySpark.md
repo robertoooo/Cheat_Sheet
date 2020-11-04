@@ -193,14 +193,27 @@ display(
 ```
 
 # Describe a DataFrame
-Number of rows in the Dataset
+Number of rows in the Dataset (Aggregate function: triggers a job)
 ```py
 total = DF.count()
 
 print("Record Count: {0:,}".format( total ))
 ```
 
-## cache() /& persist()
+## Transformations (does not trigger a job)
+Limit the number of records
+```py
+newDF = DF.limit(n)
+```
+Transform the data by selecting columns
+```py
+newDF = DF.select("c1","c2,)
+```
+Drop columns
+```py
+newDF = DF.drop("col1")
+
+## cache() & persist()
 Cache data for better performance. Moves the data into memory of the local executor instead of reading the data from its source.
 Cache is just an allias for persist.
 ```py
@@ -210,8 +223,21 @@ Cache is just an allias for persist.
 ) 
 ```
 
-## Actions: show() /& display()
+### distinct() & dropDuplicates()
+Returns a new Dataset that contains only the unique rows from this Dataset
+```py
+distinctDF = (DF                    # Our original DataFrame from spark.read.parquet(..)
+  .select("col1")                   # Drop all columns except the "col1" column
+  .distinct()                       # Reduce the set of all records to just the distinct column.
+)
+```
 
+## Actions: show() & display()
+`show(..)` is part of core spark - `display(..)` is specific to Databricks notebooks.
+show() is ugly - display() is pretty.
+```py
+DF.show(n=20, truncate=True) #The standard parameters, can be empty
+```
 
 
 
