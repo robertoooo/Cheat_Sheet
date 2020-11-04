@@ -48,7 +48,7 @@ Another magic command that can be used equivalent to the display command
 %fs ls /mnt/training
 ```
 
-# Reading Data
+# Reading and Writing Data
 ## Read CSV
 Add another option to use the first line of all files as headers
 Print schema directly upon read
@@ -123,11 +123,12 @@ print("-"*80)
 ```py
 parquetFile = "/mnt/training/wikipedia/pageviews/pageviews_by_second.parquet/"
 
-(spark.read              # The DataFrameReader
+DF = (spark.read              # The DataFrameReader
   .parquet(parquetFile)  # Creates a DataFrame from Parquet after reading in the file
-  .printSchema()         # Print the DataFrame's schema
 )
+print(DF) #Python hack to see the data types
 ```
+
 Print number of partitions and records per partition
 ```py
 parquetDF = spark.read.schema(parquetSchema).parquet(parquetFile)
@@ -173,7 +174,6 @@ And now use the SQL API to reference that same DataFrame as *parquet_table*
 select * from parquet_table order by requests desc limit(5)
 ```
 
-# Write Data
 ## Write Parquet files from `DataFrame`
 ```py
 fileName = userhome + "/pageviews_by_second.parquet"
@@ -192,10 +192,41 @@ display(
 )
 ```
 
+# Describe a DataFrame
+Number of rows in the Dataset
+```py
+total = DF.count()
+
+print("Record Count: {0:,}".format( total ))
+```
+
+## cache() /& persist()
+Cache data for better performance. Moves the data into memory of the local executor instead of reading the data from its source.
+Cache is just an allias for persist.
+```py
+(DF
+  .cache()         # Mark the DataFrame as cached
+  #.unpresist() #Remove the cache by calling unpresist().
+) 
+```
+
+## Actions: show() /& display()
 
 
 
-# PySpark
+
+
+
+
+
+
+
+
+
+
+
+
+# PySpark (RDD)
 ## Transforming RDD
 * **map:** Transform a set of datda given a function, one-to-one relationship. The new RDD will have just as many entries as the original RDD.
 * **flatmap:** Similar to map, but has the capability to produce or reduce values. 
