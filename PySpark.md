@@ -137,7 +137,18 @@ printRecordsPerPartition(parquetDF)
 print("-"*80)
 ```
 
-
+## Read from a Table/View
+After uploading the data or connecting it in the "Data" tab on Databricks we can read in the "table" as a `DataFrame`
+```py
+pageviewsBySecondsExampleDF = spark.read.table("pageviews_by_second_example_1_tsv")
+pageviewsBySecondsExampleDF.printSchema()
+```
+Print number of partitions and records per partition
+```py
+print("Partitions: " + str(pageviewsBySecondsExampleDF.rdd.getNumPartitions()))
+printRecordsPerPartition(pageviewsBySecondsExampleDF)
+print("-"*80)
+```
 
 
 # PySpark
