@@ -232,6 +232,23 @@ distinctDF = (DF                    # Our original DataFrame from spark.read.par
 )
 ```
 
+### groupBy()
+Group by one column and aggregate another 
+```py
+schemaDDL = "col1 STRING, col2 STRING, col3 FLOAT, col4 DATE"
+
+sourcePath = "/mnt/path/to/parquet/"
+
+countsDF = (spark.read
+  .format("parquet")
+  .schema(schemaDDL)
+  .load(sourcePath)
+  .groupBy("col1", "col2").count()
+  .withColumnRenamed("col2", "counts")
+  .orderBy("col1")
+)
+```
+
 ## Actions: show() & display()
 `show(..)` is part of core spark - `display(..)` is specific to Databricks notebooks.
 show() is ugly - display() is pretty.
