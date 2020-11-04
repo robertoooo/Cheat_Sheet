@@ -173,6 +173,27 @@ And now use the SQL API to reference that same DataFrame as *parquet_table*
 select * from parquet_table order by requests desc limit(5)
 ```
 
+# Write Data
+## Write Parquet files from `DataFrame`
+```py
+fileName = userhome + "/pageviews_by_second.parquet"
+print("Output location: " + fileName)
+
+(csvDF.write                       # Our DataFrameWriter
+  .option("compression", "snappy") # One of none, snappy, gzip, and lzo
+  .mode("overwrite")               # Replace existing files
+  .parquet(fileName)               # Write DataFrame to Parquet files
+)
+```
+Display the file in the DBFS
+```py
+display(
+  dbutils.fs.ls(fileName)
+)
+```
+
+
+
 
 # PySpark
 ## Transforming RDD
