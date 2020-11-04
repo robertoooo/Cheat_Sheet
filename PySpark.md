@@ -48,6 +48,57 @@ Another magic command that can be used equivalent to the display command
 %fs ls /mnt/training
 ```
 
+# Reading Data
+## Read CSV
+# A reference to our tab-separated-file
+Add another option to use the first line of all files as headers
+Print schema directly upon read
+inferSchema to infer the data type
+```py
+csvFile = "/mnt/path/to/file.csv"
+
+tempDF = (spark.read           # The DataFrameReader
+   .option("sep", "\t")        # Use tab delimiter (default is comma-separator)
+   .option("header", "true")   # Use first line of all files as header
+   .option("inferSchema", "true")  # Automatically infer data types
+   .csv(csvFile)               # Creates a DataFrame from CSV after reading in the file
+   .printSchema()
+)
+```
+Print the structure of the DataFrame and display the data
+```py
+tempDF.printSchema()
+display(tempDF)
+```
+
+Declare a Schema
+```py
+# Required for StructField, StringType, IntegerType, etc.
+from pyspark.sql.types import *
+
+csvSchema = StructType([
+  StructField("timestamp", StringType(), False),
+  StructField("site", StringType(), False),
+  StructField("requests", IntegerType(), False)
+])
+```
+
+Read the data with a specified schema
+```py
+(spark.read                   # The DataFrameReader
+  .option('header', 'true')   # Ignore line #1 - it's a header
+  .option('sep', "\t")        # Use tab delimiter (default is comma-separator)
+  .schema(csvSchema)          # Use the specified schema
+  .csv(csvFile)               # Creates a DataFrame from CSV after reading in the file
+  .printSchema()
+)
+```
+
+
+
+
+
+
 # PySpark
 ## Transforming RDD
 * **map:** Transform a set of datda given a function, one-to-one relationship. The new RDD will have just as many entries as the original RDD.
