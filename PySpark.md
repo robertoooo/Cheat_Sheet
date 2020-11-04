@@ -212,7 +212,7 @@ newDF = DF.select("c1","c2,)
 Drop columns
 ```py
 newDF = DF.drop("col1")
-
+```
 ## cache() & persist()
 Cache data for better performance. Moves the data into memory of the local executor instead of reading the data from its source.
 Cache is just an allias for persist.
