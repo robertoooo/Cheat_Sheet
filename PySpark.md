@@ -50,7 +50,6 @@ Another magic command that can be used equivalent to the display command
 
 # Reading Data
 ## Read CSV
-# A reference to our tab-separated-file
 Add another option to use the first line of all files as headers
 Print schema directly upon read
 inferSchema to infer the data type
