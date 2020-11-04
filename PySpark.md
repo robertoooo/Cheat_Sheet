@@ -290,3 +290,10 @@ totalsByAge = rdd.map(lambda x:(x, 1)) #A single entety of two things, a key and
 With key/value data, use mapValues() and flatMapValues() if your transformation doesn't affect the keys.
 Less computationaly heavy.
 
+
+# Verify work
+```py
+expected = 1783138
+assert totalArticles == expected, "Expected the total to be " + str(expected) + " but found " + str(totalArticles)
+```
+If true nothing happens, if false it will give an error and print the text.
