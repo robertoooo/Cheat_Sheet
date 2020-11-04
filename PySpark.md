@@ -98,6 +98,44 @@ print("Partitions: " + str(csvDF.rdd.getNumPartitions()) )
 printRecordsPerPartition(csvDF)
 ```
 
+## Read JSON
+```py
+jsonFile = "dbfs:/mnt/training/wikipedia/edits/snapshot-2016-05-26.json"
+
+wikiEditsDF = (spark.read           # The DataFrameReader
+    .option("inferSchema", "true")  # Automatically infer data types & column names
+    .json(jsonFile)                 # Creates a DataFrame from JSON after reading in the file
+ )
+wikiEditsDF.printSchema()
+```
+Print number of partitions and records per partition
+```py
+jsonDF = (spark.read
+  .schema(jsonSchema)
+  .json(jsonFile)    
+)
+print("Partitions: " + str(jsonDF.rdd.getNumPartitions()))
+printRecordsPerPartition(jsonDF)
+print("-"*80)
+```
+
+## Read Parquet
+```py
+parquetFile = "/mnt/training/wikipedia/pageviews/pageviews_by_second.parquet/"
+
+(spark.read              # The DataFrameReader
+  .parquet(parquetFile)  # Creates a DataFrame from Parquet after reading in the file
+  .printSchema()         # Print the DataFrame's schema
+)
+```
+Print number of partitions and records per partition
+```py
+parquetDF = spark.read.schema(parquetSchema).parquet(parquetFile)
+
+print("Partitions: " + str(parquetDF.rdd.getNumPartitions()) )
+printRecordsPerPartition(parquetDF)
+print("-"*80)
+```
 
 
 
