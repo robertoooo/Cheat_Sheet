@@ -92,7 +92,11 @@ Read the data with a specified schema
   .printSchema()
 )
 ```
-
+Print Number of partitions and records per partition
+```py
+print("Partitions: " + str(csvDF.rdd.getNumPartitions()) )
+printRecordsPerPartition(csvDF)
+```
 
 
 
