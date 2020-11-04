@@ -137,6 +137,7 @@ printRecordsPerPartition(parquetDF)
 print("-"*80)
 ```
 
+
 ## Read from a Table/View
 After uploading the data or connecting it in the "Data" tab on Databricks we can read in the "table" as a `DataFrame`
 ```py
@@ -148,6 +149,28 @@ Print number of partitions and records per partition
 print("Partitions: " + str(pageviewsBySecondsExampleDF.rdd.getNumPartitions()))
 printRecordsPerPartition(pageviewsBySecondsExampleDF)
 print("-"*80)
+```
+
+### Temporary views
+Tables loaded with spark.read.table() are also accessible through the SQL APIs
+```sql
+%sql
+select * from pageviews_by_second_example_1_tsv limit(5)
+```
+
+Take an existing `DataFrame` and register it as a view exposing it as a table to the SQL API
+```py
+# create a DataFrame from a parquet file
+parquetFile2 = "/mnt/training/wikipedia/pagecounts/staging_parquet_en_only_clean/"
+parquetDF = spark.read.parquet(parquetFile)
+
+# create a temporary view from the resulting DataFrame
+parquetDF.createOrReplaceTempView("parquet_table")
+```
+And now use the SQL API to reference that same DataFrame as *parquet_table*
+```sql
+%sql
+select * from parquet_table order by requests desc limit(5)
 ```
 
 
