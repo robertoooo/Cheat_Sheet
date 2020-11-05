@@ -294,7 +294,10 @@ articlesDF = (filteredDF
 articlesDF.show(10, False)
 ```
 
-
+Convert a DataFrame to a list of n rows (Row class)
+```py
+rows = articlesDF.take(10)
+```
 
 
 
