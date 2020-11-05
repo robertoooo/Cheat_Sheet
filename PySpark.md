@@ -294,9 +294,16 @@ articlesDF = (filteredDF
 articlesDF.show(10, False)
 ```
 
-Convert a DataFrame to a list of n rows (Row class)
+## collect() and take(n)
+Convert a DataFrame to a list of n rows (Row class).
+collect() and take(n) is in short the same basic function.
 ```py
 rows = articlesDF.take(10)
+rows = (articlesDF
+  .limit(10)           # We only want the first 10 records.
+  .collect()           # The action returning all records in the DataFrame
+)
+
 ```
 
 
