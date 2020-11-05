@@ -345,10 +345,25 @@ Different ways to rename a column
 
 ```
 
-##
+## Casting timestamp
+Renaming a column and cast a unix_timestamp from string
+```py
+tempA = (initialDF
+  .withColumnRenamed("timestamp", "capturedAt")
+  .select( col("*"), unix_timestamp( col("capturedAt"), "yyyy-MM-dd HH:mm:ss") )
+)
+tempA.printSchema()
+```
 
-
-
+### Selecting month and year from timestamp
+Shows the distinct values of what month and year the data was captured.
+```py
+(pageviewsDF
+  .select( month(col("capturedAt")).alias("month"), year(col("capturedAt")).alias("year"))
+  .distinct()
+  .show()                     
+)
+``` 
 
 
 
