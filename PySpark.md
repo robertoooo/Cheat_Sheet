@@ -258,6 +258,41 @@ DF.show(n=20, truncate=True) #The standard parameters, can be empty
 
 
 
+# Column Class
+Column-level-transformations, such as sorting in a decending order.
+```py
+sortedDescDF = (pagecountsEnAllDF
+  .orderBy( col("requests").desc() )
+)  
+sortedDescDF.show(10, False) # The top 10 is good enough for now
+```
+
+### filter(..) & where(..)
+w/SQL Expression
+```py
+whereDF = (sortedDescDF
+  .where( "col1 = 'row'" )
+)
+whereDF.show(10, False)
+```
+w/Column
+```py
+filteredDF = (sortedDescDF
+  .filter( col("col1") == "row")
+)
+filteredDF.show(10, False)
+```
+
+Filter Expression
+```py
+articlesDF = (filteredDF
+  .drop("bytes_served")
+  .filter( col("article") != "Main_Page")
+  .filter( col("article") != "-")
+  .filter( col("article").startswith("Special:") == False)
+)
+articlesDF.show(10, False)
+```
 
 
 
