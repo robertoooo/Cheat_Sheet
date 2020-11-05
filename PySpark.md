@@ -47,6 +47,25 @@ Another magic command that can be used equivalent to the display command
 ```sh
 %fs ls /mnt/training
 ```
+## Set number of partitions
+To make sure wide operations don't repartition to 200
+```py
+partitions = 8
+spark.conf.set("spark.sql.shuffle.partitions", str(partitions))
+```
+Repartition
+```py
+# Create our initial DataFrame. We can let it infer the 
+# schema because the cost for parquet files is really low.
+initialDF = (spark.read
+  .option("inferSchema", "true") # The default, but not costly w/Parquet
+  .parquet(parquetFile)          # Read the data in
+  .repartition(partitions)       # From 7 >>> 8 partitions
+  .cache()                       # Cache the expensive operation
+)
+# materialize the cache
+initialDF.count()
+```
 
 # Reading and Writing Data
 ## Read CSV
@@ -306,8 +325,27 @@ rows = (articlesDF
 
 ```
 
+## Rename a column
+Different ways to rename a column
+```py
+(initialDF
+  .select( col("timestamp").alias("capturedAt"), col("site"), col("requests") )
+  .printSchema()
+)
 
+(initialDF
+  .withColumnRenamed("timestamp", "capturedAt")
+  .printSchema()
+)
 
+(initialDF
+  .toDF("capturedAt", "site", "requests")
+  .printSchema()
+)
+
+```
+
+##
 
 
 
