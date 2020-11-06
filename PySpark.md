@@ -365,6 +365,28 @@ Shows the distinct values of what month and year the data was captured.
 )
 ``` 
 
+# groupBy() & GroupedData (RelationalGroupedData)
+Where GroupedData is the supports many different aggregations.
+```py
+(pageviewsDF
+  .filter("site = 'mobile'")
+  .select( sum( col("requests")), count(col("requests")), avg(col("requests")), min(col("requests")), max(col("requests")) )
+  .show()
+)
+          
+(pageviewsDF
+  .filter("site = 'desktop'")
+  .select( sum( col("requests")), count(col("requests")), avg(col("requests")), min(col("requests")), max(col("requests")) )
+  .show()
+)
+```
+We can also format the data and rename the column so it is more verbose.
+The second argument is the number of decimals.
+```py
+format_number(sum(col("requests")), 0).alias("sum")
+```
+
+
 
 
 # PySpark (RDD)
