@@ -386,7 +386,105 @@ The second argument is the number of decimals.
 format_number(sum(col("requests")), 0).alias("sum")
 ```
 
+# Azure Key Vault
+First we need to Link Azure Databricks to the Key Vault:
+To access the Secrets UI add `secrets/createScope` after the `?o=XXXXXXXXXX` when you are inside the Databricks GUI.
 
+### List secrets scope
+```py
+dbutils.secrets.listScopes()
+```
+### List secrets within a specific scope
+```py
+dbutils.secrets.list("name-of-scope-created-in-secrets-createScope-above")
+```
+### Get a secret
+This will be printed as [REDACTED]
+```py
+print(dbutils.secrets.get(scope="students", key="storageread"))
+```
+
+# Mount Storage Account, read & write
+Mounting the container like a directory, by default, all users within the workspace will have the same privileges to interact with that directory. 
+```
+MOUNTPOINT = "/mnt/commonfiles"
+# Add the Storage Account, Container, and reference the secret to pass the SAS Token
+STORAGE_ACCOUNT = dbutils.secrets.get(scope="students", key="storageaccount")
+CONTAINER = "salesdata"
+SASTOKEN = dbutils.secrets.get(scope="students", key="storageread")
+
+# Do not change these values
+SOURCE = "wasbs://{container}@{storage_acct}.blob.core.windows.net/".format(container=CONTAINER, storage_acct=STORAGE_ACCOUNT)
+URI = "fs.azure.sas.{container}.{storage_acct}.blob.core.windows.net".format(container=CONTAINER, storage_acct=STORAGE_ACCOUNT)
+
+try:
+  dbutils.fs.mount(
+    source=SOURCE,
+    mount_point=MOUNTPOINT,
+    extra_configs={URI:SASTOKEN})
+except Exception as e:
+  if "Directory already mounted" in str(e):
+    pass # Ignore error if already mounted.
+  else:
+    raise e
+print("Success.")
+```
+
+List the files
+```py
+dbutils.fs.ls(MOUNTPOINT)
+```
+
+Read a file from a mounted directory
+```
+salesDF = (spark.read
+              .option("header", True)
+              .option("inferSchema", True)
+              .csv(MOUNTPOINT + "/sales.csv"))
+
+display(salesDF)
+```
+
+Write to mounted catalog
+```py
+try:
+  sales2004DF.write.mode("overwrite").parquet(MOUNTPOINT + "/sales2004")
+except Exception as e:
+  print(e)
+```
+
+### Cleaning up mounts
+```py
+if MOUNTPOINT in [mnt.mountPoint for mnt in dbutils.fs.mounts()]:
+  dbutils.fs.unmount(MOUNTPOINT)
+```
+
+# Writing directly to blob 
+```py
+CONTAINER = "salesdata"
+SASTOKEN = dbutils.secrets.get(scope="students", key="storageread")
+
+# Redefine the source and URI for the new container
+SOURCE = "wasbs://{container}@{storage_acct}.blob.core.windows.net/".format(container=CONTAINER, storage_acct=STORAGE_ACCOUNT)
+URI = "fs.azure.sas.{container}.{storage_acct}.blob.core.windows.net".format(container=CONTAINER, storage_acct=STORAGE_ACCOUNT)
+               
+# Set up container SAS
+spark.conf.set(URI, SASTOKEN)
+```
+
+List the files 
+```py
+dbutils.fs.ls(SOURCE)
+```
+
+Writing to blob directly 
+```py
+sales2004DF.write.mode("overwrite").parquet(SOURCE + "/sales2004")
+```
+Deleting file using SAS token
+```py
+dbutils.fs.rm(SOURCE + "/sales2004", True)
+``` 
 
 
 # PySpark (RDD)
