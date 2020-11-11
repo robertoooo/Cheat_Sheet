@@ -625,8 +625,20 @@ OPTIMIZE iot_data
 ZORDER by (deviceId)
 ```
 
-
-
+## VACUUM
+Clean up invalid files, which are small files compacted into a larger file with ´OPTIMIZE´ command.
+```py
+len(dbutils.fs.ls(iotPath + "date=2016-07-26"))
+```
+Check the lenght of the folder before and after.
+```sql
+%sql
+VACUUM iot_data RETAIN 168 HOURS;
+```
+Possible to have 0 Hours but have to run this first
+```py
+spark.conf.set("spark.databricks.delta.retentionDurationCheck.enabled", False)
+```
 
 
 
