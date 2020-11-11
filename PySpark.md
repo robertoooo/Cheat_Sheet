@@ -612,6 +612,19 @@ WHEN NOT MATCHED THEN
 ```
 
 
+# Optimize using ZORDER
+Co-locate the values of ´device_id´ to faster filter (where clause) the data based on device_id.
+```sql
+%sql
+SELECT * FROM iot_data where deviceId=92
+```
+Optimize with ZORDER to coloacte related information in the same set of files.
+```sql
+%sql
+OPTIMIZE iot_data
+ZORDER by (deviceId)
+```
+
 
 
 
