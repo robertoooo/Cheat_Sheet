@@ -436,7 +436,7 @@ dbutils.fs.ls(MOUNTPOINT)
 ```
 
 Read a file from a mounted directory
-```
+```py
 salesDF = (spark.read
               .option("header", True)
               .option("inferSchema", True)
@@ -528,7 +528,7 @@ display(spark.sql("SELECT * FROM delta.`dbfs:/user/robert.yousif@kpmg.se/delta/c
 
 ### CREATE Table using Delta Lake
 CREATE A Table Using Delta Lake, if LOCATION is specified it is considered unmanaged by the metastore. 
-```sql
+```py
 spark.sql("""
   DROP TABLE IF EXISTS customer_data_delta2
 """)
