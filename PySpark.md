@@ -562,6 +562,47 @@ Read the file and store it in a new dataframe with the same schedule, keep the h
 )
 ```
 
+## UPSERT (UPdate & inSERT)
+Read JSON file and store in DF
+```py
+upsertDF = spark.read.format("json").load("/mnt/training/enb/commonfiles/upsert-data.json")
+display(upsertDF)
+```
+Register it as temporary view so this table doesn't persist in DBFS (but possible to use SQL to query)
+```py
+upsertDF.createOrReplaceTempView("upsert_data")
+```
+Use the temorary view to inSERT new data and UPdate some previous records
+```sql
+%sql
+MERGE INTO customer_data_delta
+USING upsert_data
+ON customer_data_delta.InvoiceNo = upsert_data.InvoiceNo
+  AND customer_data_delta.StockCode = upsert_data.StockCode
+WHEN MATCHED THEN
+  UPDATE SET *
+WHEN NOT MATCHED
+  THEN INSERT *
+```
+See changes made to that specific customer
+```sql
+%sql
+SELECT * FROM customer_data_delta WHERE CustomerID=20993
+```
+
+
+
+
+
+
+
+
+
+
+
+
+#########################################################################################################################################################################
+
 # PySpark (RDD)
 ## Transforming RDD
 * **map:** Transform a set of datda given a function, one-to-one relationship. The new RDD will have just as many entries as the original RDD.
