@@ -252,7 +252,7 @@ distinctDF = (DF                    # Our original DataFrame from spark.read.par
 ```
 
 ### groupBy()
-Group by one column and aggregate another 
+Group by two column and aggregate another 
 ```py
 schemaDDL = "col1 STRING, col2 STRING, col3 FLOAT, col4 DATE"
 
@@ -263,9 +263,17 @@ countsDF = (spark.read
   .schema(schemaDDL)
   .load(sourcePath)
   .groupBy("col1", "col2").count()
-  .withColumnRenamed("col2", "counts")
+  .withColumnRenamed("count", "counts")
   .orderBy("col1")
 )
+```
+Group by two columns and aggregate the count
+```py
+customerCounts = (deltaDF.groupBy("CustomerID", "Country")
+  .count()
+  .withColumnRenamed("count", "total_orders"))
+
+display(customerCounts)
 ```
 
 ## Actions: show() & display()
