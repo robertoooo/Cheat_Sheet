@@ -597,7 +597,19 @@ See changes made to that specific customer
 %sql
 SELECT * FROM customer_data_delta WHERE CustomerID=20993
 ```
+Like previous update but only updating the aggregated number "total_orders" when there is a match and insert the rest.
+```sql
+%sql
 
+MERGE INTO customer_counts
+USING new_customer_counts
+ON customer_counts.Country = new_customer_counts.Country
+AND customer_counts.CustomerID = new_customer_counts.CustomerID
+WHEN MATCHED THEN
+  UPDATE SET total_orders = customer_counts.total_orders + new_customer_counts.total_orders
+WHEN NOT MATCHED THEN
+  INSERT *
+```
 
 
 
