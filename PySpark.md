@@ -406,7 +406,7 @@ print(dbutils.secrets.get(scope="students", key="storageread"))
 
 # Mount Storage Account, read & write
 Mounting the container like a directory, by default, all users within the workspace will have the same privileges to interact with that directory. 
-```
+```py
 MOUNTPOINT = "/mnt/commonfiles"
 # Add the Storage Account, Container, and reference the secret to pass the SAS Token
 STORAGE_ACCOUNT = dbutils.secrets.get(scope="students", key="storageaccount")
