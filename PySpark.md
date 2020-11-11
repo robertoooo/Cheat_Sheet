@@ -486,6 +486,81 @@ Deleting file using SAS token
 dbutils.fs.rm(SOURCE + "/sales2004", True)
 ``` 
 
+# DELTA LAKE
+Set up relevant paths, input file and the path to the output data
+```py
+userhome = "dbfs:/user/username"
+inputPath = "/mnt/training/online_retail/data-001/data.csv"
+DataPath = userhome + "/delta/customer-data/"
+```
+Read the data into a DataFrame with supplied schema. Partition based on country.
+```
+from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType, StringType
+
+inputSchema = StructType([
+  StructField("InvoiceNo", IntegerType(), True),
+  StructField("StockCode", StringType(), True),
+  StructField("Description", StringType(), True),
+  StructField("Quantity", IntegerType(), True),
+  StructField("InvoiceDate", StringType(), True),
+  StructField("UnitPrice", DoubleType(), True),
+  StructField("CustomerID", IntegerType(), True),
+  StructField("Country", StringType(), True)
+])
+
+rawDataDF = (spark.read
+  .option("header", "true")
+  .schema(inputSchema)
+  .csv(inputPath)
+)
+```
+### Write the rawDataDF to Delta Lake 
+```py
+
+# write to Delta Lake
+rawDataDF.write.mode("overwrite").format("delta").partitionBy("Country").save(DataPath)
+```
+Query the data dircetly on a directory (Same command)
+```py
+display(spark.sql("SELECT * FROM delta.`{}` LIMIT 5".format(DataPath)))
+display(spark.sql("SELECT * FROM delta.`dbfs:/user/robert.yousif@kpmg.se/delta/customer-data/` LIMIT 5"))
+```
+
+### CREATE Table using Delta Lake
+CREATE A Table Using Delta Lake, if LOCATION is specified it is considered unmanaged by the metastore. 
+```py
+spark.sql("""
+  DROP TABLE IF EXISTS customer_data_delta2
+""")
+spark.sql("""
+  CREATE TABLE customer_data_delta
+  USING DELTA
+  LOCATION '{}'
+""".format(DataPath))
+```
+
+### Metadata
+The Schema is stored in `_delta_log` directory shown below:
+```py
+display(dbutils.fs.ls(DataPath + "/_delta_log"))
+```
+Display the Metadata
+```sql
+%sql
+DESCRIBE DETAIL customer_data_delta
+```
+
+## Append Using Delte Lake 
+Read the file and store it in a new dataframe with the same schedule, keep the header.
+```py
+(newDataDF
+  .write
+  .format("delta")
+  .partitionBy("Country")
+  .mode("append")
+  .save(DataPath)
+)
+```
 
 # PySpark (RDD)
 ## Transforming RDD
