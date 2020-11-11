@@ -494,7 +494,7 @@ inputPath = "/mnt/training/online_retail/data-001/data.csv"
 DataPath = userhome + "/delta/customer-data/"
 ```
 Read the data into a DataFrame with supplied schema. Partition based on country.
-```
+```py
 from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType, StringType
 
 inputSchema = StructType([
@@ -528,7 +528,7 @@ display(spark.sql("SELECT * FROM delta.`dbfs:/user/robert.yousif@kpmg.se/delta/c
 
 ### CREATE Table using Delta Lake
 CREATE A Table Using Delta Lake, if LOCATION is specified it is considered unmanaged by the metastore. 
-```py
+```sql
 spark.sql("""
   DROP TABLE IF EXISTS customer_data_delta2
 """)
