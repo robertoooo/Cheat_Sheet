@@ -288,6 +288,8 @@ DF.show(n=20, truncate=True) #The standard parameters, can be empty
 # Column Class
 Column-level-transformations, such as sorting in a decending order.
 ```py
+from pyspark.sql.functions import col
+
 sortedDescDF = (pagecountsEnAllDF
   .orderBy( col("requests").desc() )
 )  
