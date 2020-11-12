@@ -684,10 +684,61 @@ streamingDF = (initialDF
 streamingDF.isStreaming
 ```
 
+## Write data from a streaming query to an output path directory
+
+```py
+basePath = userhome + "/structured-streaming-concepts/python" # A working directory for our streaming app
+dbutils.fs.mkdirs(basePath)                                   # Make sure that our working directory exists
+outputPathDir = basePath + "/output.parquet"                  # A subdirectory for our output
+checkpointPath = basePath + "/checkpoint"                     # A subdirectory for our checkpoint & W-A logs
+
+streamingQuery = (streamingDF                                 # Start with our "streaming" DataFrame
+  .writeStream                                                # Get the DataStreamWriter
+  .queryName("stream_1p")                                     # Name the query
+  .trigger(processingTime="3 seconds")                        # Configure for a 3-second micro-batch
+  .format("parquet")                                          # Specify the sink type, a Parquet file
+  .option("checkpointLocation", checkpointPath)               # Specify the location of checkpoint files & W-A logs
+  .outputMode("append")                                       # Write only new data to the "file"
+  .start(outputPathDir)                                       # Start the job, writing to the specified directory
+)
+```
+
+Monitor the Streaming Querie
+```py
+streamingQuery.recentProgress
+```
+Iterate a list of active streams (streaming Queries)
+```py
+for s in spark.streams.active:         # Iterate over all streams
+  print("{}: {}".format(s.id, s.name)) # Print the stream's id and name
+````
+Terminate Streaming Query
+```py
+streamingQuery.awaitTermination(5)      # Stream for another 5 seconds while the current thread blocks
+streamingQuery.stop()                   # Stop the stream
+```
+Terminate all remaining streams
+```py
+for s in spark.streams.active:
+  s.stop()
+```
+
+Display function to render a live plot, will automatically start our streaming DF
+```py
+myStream = "stream_2p"
+display(streamingDF, streamName = myStream)
+```
+Remove a directory
+```py
+dbutils.fs.rm(basePath, True)
+``` 
 
 
-
-
+# Spark Catalog
+List the tables
+```py
+spark.catalog.listTables()
+```
 
 
 
