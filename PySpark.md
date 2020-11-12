@@ -657,6 +657,36 @@ SELECT COUNT(*)
 FROM customer_data_delta
 VERSION AS OF 1
 ```
+# Structured Streaming Spark
+Configure a File Stream
+```py
+# Here we define the schema using a DDL-formatted string (the SQL Data Definition Language).
+dataSchema = "Recorded_At timestamp, Device string, Index long, Model string, User string, _corrupt_record String, gt string, x double, y double, z double"
+
+dataPath = "dbfs:/mnt/training/definitive-guide/data/activity-data-stream.json"
+initialDF = (spark
+  .readStream                            # Returns DataStreamReader
+  .option("maxFilesPerTrigger", 1)       # Force processing of only 1 file per trigger
+  .schema(dataSchema)                    # Required for all streaming DataFrames
+  .json(dataPath)                        # The stream's source directory and file type
+)
+
+streamingDF = (initialDF
+  .withColumnRenamed("Index", "User_ID")  # Pick a "better" column name
+  .drop("_corrupt_record")                # Remove an unnecessary column
+)
+```
+## Check if `DataFrame` is "static" or "streaming"
+```py
+# Static vs Streaming?
+streamingDF.isStreaming
+```
+
+
+
+
+
+
 
 
 
