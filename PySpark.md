@@ -639,6 +639,10 @@ Possible to have 0 Hours but have to run this first
 ```py
 spark.conf.set("spark.databricks.delta.retentionDurationCheck.enabled", False)
 ```
+The new optimized files are stored together with the preoptimized files
+```py
+dbutils.fs.ls(DeltaPath+"partitionName")
+```
 
 # Time Travel
 Query past versions of the data.
