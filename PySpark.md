@@ -640,8 +640,19 @@ Possible to have 0 Hours but have to run this first
 spark.conf.set("spark.databricks.delta.retentionDurationCheck.enabled", False)
 ```
 
-
-
+# Time Travel
+Query past versions of the data.
+```sql
+%sql
+DESCRIBE HISTORY customer_data_delta
+```
+Query an older version
+```sql
+%sql
+SELECT COUNT(*)
+FROM customer_data_delta
+VERSION AS OF 1
+```
 
 
 
