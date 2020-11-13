@@ -760,6 +760,23 @@ spark.conf.set("spark.sql.shuffle.partitions", sc.defaultParallelism) #2nd argum
 display(countsDF) #Start the stream again
 ```
 
+## Watermarking
+Watermarking is a point after which Structured Streaming will commit windowed data to a sink, in this case the sink is memory as `display()` mimics.
+Structured Streaming to keep no more than 2 hours of aggregated data. 
+```py
+watermarkedDF = (inputDF
+  .withWatermark("time", "2 hours")           # Specify a 2-hour watermark
+  .groupBy(col("action"),                     # Aggregate by action...
+           window(col("time"), "1 hour"))     # ...then by a 1 hour window
+  .count()                                    # For each aggregate, produce a count
+  .select(col("window.start").alias("start"), # Elevate field to column
+          col("action"),                      # Include count
+          col("count"))                       # Include action
+  .orderBy(col("start"), col("action"))       # Sort by the start time
+)
+display(watermarkedDF)                        # Start the stream and display it
+```
+
 # Spark Catalog
 List the tables
 ```py
