@@ -659,7 +659,7 @@ SELECT COUNT(*)
 FROM customer_data_delta
 VERSION AS OF 1
 ```
-# Structured Streaming Spark
+# READSTREAM: Structured Streaming Spark
 Configure a File Stream
 ```py
 # Here we define the schema using a DDL-formatted string (the SQL Data Definition Language).
@@ -684,8 +684,7 @@ streamingDF = (initialDF
 streamingDF.isStreaming
 ```
 
-## Write data from a streaming query to an output path directory
-
+## WRITESTREAM: Write data from a streaming query to an output path directory
 ```py
 basePath = userhome + "/structured-streaming-concepts/python" # A working directory for our streaming app
 dbutils.fs.mkdirs(basePath)                                   # Make sure that our working directory exists
@@ -733,6 +732,33 @@ Remove a directory
 dbutils.fs.rm(basePath, True)
 ``` 
 
+## READSTREAM: Aggregated Stream with Time Window
+from pyspark.sql.functions import window, col
+
+inputDF = (spark
+  .readStream                                 # Returns an instance of DataStreamReader
+  .schema(jsonSchema)                         # Set the schema of the JSON data
+  .option("maxFilesPerTrigger", 1)            # Treat a sequence of files as a stream, one file at a time
+  .json(inputPath)                            # Specifies the format, path and returns a DataFrame
+)
+
+countsDF = (inputDF
+  .groupBy(col("action"),                     # Aggregate by action...
+           window(col("time"), "1 hour"))     # ...then by a 1 hour window
+  .count()                                    # For the aggregate, produce a count
+  .select(col("window.start").alias("start"), # Elevate field to column
+          col("action"),                      # Include count
+          col("count"))                       # Include action
+  .orderBy(col("start"), col("action"))       # Sort by the start time and action
+)
+
+### Reduce the number of partitions Spark Shuffles to
+groupBy() causes a shuffle which is 200 partitions by default.
+```py
+spark.conf.set("spark.sql.shuffle.partitions", sc.defaultParallelism) #2nd argument is 8=cores
+
+display(countsDF) #Start the stream again
+```
 
 # Spark Catalog
 List the tables
