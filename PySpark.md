@@ -67,6 +67,15 @@ initialDF = (spark.read
 initialDF.count()
 ```
 
+## Install library with PyPI
+```py
+# This library allows the Python kernel to stream content to an Event Hub:
+dbutils.library.installPyPI('azure-eventhub')
+
+#best practice is to restart python after installing libraries
+dbutils.library.restartPython() 
+```
+
 # Reading and Writing Data
 ## Read CSV
 Add another option to use the first line of all files as headers
