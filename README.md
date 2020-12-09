@@ -81,7 +81,22 @@ git checkout sound_branch //Change to the branch sound branch
 git diff master remotes/origin/master //Compare the local and remote master 
 
 ```
-
+## Diff between local and remote branch in VS code
+Open file in VS Code
+```shell class:"lineNo"
+code  ~/.gitconfig
+```
+And add the following lines 
+```shell class:"lineNo"
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+```
+To compare differences between local and remote branch
+```shell class:"lineNo"
+git difftool master origin/master
+```
 
 ### Hotkeys
 C:\Programs\Git\etc\profile.d\aliases.sh
