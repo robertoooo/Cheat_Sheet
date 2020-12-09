@@ -40,6 +40,14 @@ git merge master //If you are in another branch, you will fetch master and rebas
 
 ```
 
+### Merge two branches
+To merge master branch with development branch
+```shell class:"lineNo"
+git checkout master
+git merge development
+
+```
+
 ### Status of remote origin/URL, Remove origin
 ```shell class:"lineNo"
 
