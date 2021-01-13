@@ -4,7 +4,7 @@ See the version and create some components
 dotnet --info #shows the versions installed
 dotnet new sln #creates a new solution (sln) file
 dotnet new classlib -n Domain #creates a new class library
-dotnet new webapi -n API
+dotnet new webapi -n API #Creates an ASP.NET Core Web API
 ```
 ### Add dependencies and references
 Add projects to the sln file
@@ -17,4 +17,9 @@ Add references to the underlying classes
 dotnet add reference ../Domain/ 
 ```
 
+### Run the .NET project output 
+Runs the API project 
+```sh
+dotnet run -p API/
+```
 
