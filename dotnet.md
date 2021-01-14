@@ -23,3 +23,8 @@ Runs the API project
 dotnet run -p API/
 ```
 
+### Install all dependencies
+```sh
+dotnet restore #restores dependencies specified in a .NET project
+``` 
+
