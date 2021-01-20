@@ -29,3 +29,9 @@ dotnet watch run
 dotnet restore #restores dependencies specified in a .NET project
 ``` 
 
+### Create a new migration
+```sh
+dotnet ef migrations add "NameofAdd" -p Persistence/ -s API/
+#-p: project that contains our data context
+#-s: starter project
+```
