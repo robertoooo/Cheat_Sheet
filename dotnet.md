@@ -21,6 +21,7 @@ dotnet add reference ../Domain/
 Runs the API project 
 ```sh
 dotnet run -p API/
+dotnet watch run
 ```
 
 ### Install all dependencies
