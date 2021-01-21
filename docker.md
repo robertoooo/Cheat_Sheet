@@ -1,4 +1,4 @@
-### Basic docker commands
+## Basic docker commands
 ```powershell
 docker pull ubuntu
 
@@ -19,6 +19,10 @@ docker run -d -p 5000:5000 flask-tutorial #Builds and run the container in the b
 
 docker exec -ti [container-id] bash #Enter already running container with bash 
 ```
+
+### Docker Build
+```powershell
+docker build . #Builds a dockerimage based on the dockerfile
 
 ### Docker Monitoring
 ```Dockerfile
