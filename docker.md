@@ -20,9 +20,12 @@ docker run -d -p 5000:5000 flask-tutorial #Builds and run the container in the b
 docker exec -ti [container-id] bash #Enter already running container with bash 
 ```
 
-### Docker Build
+### Docker Build & Compose
 ```powershell
 docker build . #Builds a dockerimage based on the dockerfile
+docker-compose build #Build a service
+docker-compose run app sh -c "django-admin.py startproject app ."
+```
 
 ### Docker Monitoring
 ```Dockerfile
