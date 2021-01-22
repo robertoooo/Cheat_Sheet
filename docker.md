@@ -24,7 +24,7 @@ docker exec -ti [container-id] bash #Enter already running container with bash
 ```powershell
 docker build . #Builds a dockerimage based on the dockerfile
 docker-compose build #Build a service
-docker-compose run app sh -c "django-admin.py startproject app ."
+docker-compose run app sh -c "django-admin.py startproject app ." #Runs a command in shell
 ```
 
 ### Docker Monitoring
