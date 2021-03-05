@@ -114,3 +114,15 @@ alias co='git checkout'
 alias aa='git add .'
 alias push='git push origin master'
 ```
+
+
+# VS Code Initialization
+- Material Icon Theme
+- Prettier
+- Bracket Pair Colorizer 2
+- Auto Rename Tag #HTML/XML
+- Auto Close Tag #HTML/XML
+- ESLint 
+- Git Blame 
+- indent-rainbow 
+- Trailing Spaces
