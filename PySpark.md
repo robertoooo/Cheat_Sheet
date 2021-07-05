@@ -423,7 +423,19 @@ This will be printed as [REDACTED]
 print(dbutils.secrets.get(scope="students", key="storageread"))
 ```
 
-# Mount Storage Account, read & write
+# Set Spark configuration to access blob/dl using access key (for DataFrame or DataSet API)
+```py
+#Set Spark Configuration properties using azure data lake access key which we fetch from key vault. 
+spark.conf.set(
+    "fs.azure.account.key.<storage-account-name>.dfs.core.windows.net",
+    dbutils.secrets.get(scope="<scope-name>",key="<storage-account-access-key-name>"))
+```
+List directories
+```py
+dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<directory-name>")
+```
+
+# Mount Storage Account using SAS key, read & write
 Mounting the container like a directory, by default, all users within the workspace will have the same privileges to interact with that directory. 
 ```py
 MOUNTPOINT = "/mnt/commonfiles"
