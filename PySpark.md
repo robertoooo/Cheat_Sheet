@@ -220,6 +220,9 @@ display(
 )
 ```
 
+## Using Widgets in Databricks Notebooks
+https://docs.databricks.com/notebooks/widgets.html
+
 # Describe a DataFrame
 Number of rows in the Dataset (Aggregate function: triggers a job)
 ```py
