@@ -1,3 +1,22 @@
+# Azure SQL Database Monitoring
+```sql
+SELECT @@VERSION --Check the version that you deployed
+SELECT SERVERPROPERTY('EngineEdition'); --Check the type of deployment
+
+-- Check databases and the system objects
+SELECT * FROM sys.databases;
+SELECT * FROM sys.objects;
+
+SELECT * FROM sys.dm_os_schedulers where STATUS = 'VISIBLE ONLINE'; -- View the schedulers
+
+SELECT * FROM sys.dm_os_job_object; -- See resources available 
+SELECT * FROM sys.dm_user_db_resource_governance; -- See Deployment tier and Service Level Objective (SLO)
+
+SELECT * FROM sys.dm_exec_requests; --List of active requests
+
+
+```
+
 # Basic SQL
 
 ```sql
