@@ -438,6 +438,9 @@ List directories
 dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<directory-name>")
 ```
 
+# Mount Data Lake using Access Key
+https://www.mssqltips.com/sqlservertip/6499/reading-and-writing-data-in-azure-data-lake-storage-gen-2-with-azure-databricks/
+
 # Mount Storage Account using SAS key, read & write
 Mounting the container like a directory, by default, all users within the workspace will have the same privileges to interact with that directory. 
 ```py
