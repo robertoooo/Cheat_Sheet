@@ -1,3 +1,10 @@
+# Generate Time Series
+Using sequence with explode
+```py
+from pyspark.sql.functions import sequence, to_date, explode, col
+df = spark.sql("SELECT sequence(to_date('2018-01-01'), to_date('2018-03-01'), interval 1 month) as date").withColumn("date", explode(col("date"))
+```
+
 # Apache Spark Notebook Basics
 Magical Commands: allows us to execute code in languages other then the notebook's default.
 ```sh
