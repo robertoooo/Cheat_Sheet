@@ -50,7 +50,13 @@ def mergetoDF(microdf, batchId):
   
 ```
 
-# Delete a table + metadata
+# Create, Delete a table + metadata
+Create a database
+```sql
+CREATE DATABASE IF NOT EXISTS database_name;
+USE database_name;
+```
+
 Remove the files from blob
 ```py
 dbutils.fs.rm(f"abfss://{container}@{storage_account}.dfs.core.windows.net/{endpoint}", True) #Deleteing recursive 
