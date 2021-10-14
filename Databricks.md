@@ -49,3 +49,13 @@ def mergetoDF(microdf, batchId):
   #And then a merge function or similar to have a return from the function
   
 ```
+
+# Delete a table + metadata
+Remove the files from blob
+```py
+dbutils.fs.rm(f"abfss://{container}@{storage_account}.dfs.core.windows.net/{endpoint}", True) #Deleteing recursive 
+```
+Delete the metadata, the table reference from databricks
+```sql
+DROP TABLE IF EXISTS database.table_name
+```
