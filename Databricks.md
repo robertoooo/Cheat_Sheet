@@ -65,3 +65,16 @@ Delete the metadata, the table reference from databricks
 ```sql
 DROP TABLE IF EXISTS database.table_name
 ```
+
+
+# Databricks + Datafactory
+Use this in the notebook to return a value to the datafactory
+```py
+dbutils.notebook.exit(myReturnValueGoesHere)
+dbutils.notebook.exit('{"hello": {"some": {"object": "value"}}}')
+```
+And this inside the datafactory to read the output
+```py
+@activity('RunNotebookActivityName').output.runOutput
+@activity('RunNotebookActivityName').output.runOutput.hello.some.object
+```
