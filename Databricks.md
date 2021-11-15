@@ -1,12 +1,34 @@
-# Setup Azure Datalake connection using key
+# Setup Azure Datalake connection using access key and secrets
+Setup Variables
 ```py
-storageurl = "fs.azure.account.key.<SCOPE>.dfs.core.windows.net"
-spark.conf.set(storageurl, dbutils.secrets.get(scope="scopename",key="keyname"))
-
-storage_account = "storageaccountname"
-
+scope_name = ""
+storage_account_access_key_name = ""
+storage_account_name = ""
+source_container_name = ""
 ```
 
+Direct connection 
+```py
+storatge_url = f"fs.azure.account.key.{storage_account_name}.dfs.core.windows.net"
+spark.conf.set(storatge_url, dbutils.secrets.get(scope="scope_name",key="storage_account_access_key_name"))
+spark.conf.set(storage_account_name,storage_account_access_key_name)
+datalake_url = f"abfss://{source_container_name}@{storage_account_name}.dfs.core.windows.net"
+```
+
+
+Mounting storage to Databricks 
+```py
+storageAccountAccessKey = dbutils.secrets.get(scope=scope_name,key=storage_account_access_key_name)
+ 
+try:
+  dbutils.fs.mount(
+    source = f"wasbs://{source_container_name}@{storageAccountName}.blob.core.windows.net",
+    mount_point = f"/mnt/filestore/{source_container_name}/",
+    extra_configs = {'fs.azure.account.key.' + storageAccountName + '.blob.core.windows.net': storageAccountAccessKey}
+  )
+except Exception as e:
+  print(e)
+```
 
 # Read and Writestream
 Readstream using autoloader 
