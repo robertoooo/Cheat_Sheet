@@ -30,6 +30,17 @@ except Exception as e:
   print(e)
 ```
 
+# Create Delta Table using the Delta Table Builder Class
+```py
+from delta.tables import *
+deltatabletest = DeltaTable.createOrReplace(spark).tableName(<table_name>) #Creates an object of the  DeltaTableBuilder class
+deltatabletest.addColumn(<column name>, <column type>, comment=<>) # Add columns to the deltatablebuilder object 
+deltatabletest.location(<path>).execute() # Execute the deltatablebuilder object and stores the table in path
+```
+
+# Merge Delta Table using the Delta Merge Builder Class
+
+
 # Read and Writestream
 Readstream using autoloader 
 ```py
