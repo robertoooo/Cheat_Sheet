@@ -22,6 +22,12 @@ run models based on tags inside the dbt_project.yml file
 dbt run -m tag:hub
 ```
 
+run models based on model name
+´´´sh
+dbt run -m SELECT <modelname>
+```
+  
+  
 # Install packages
 To install all packages inside the package.yml file placed in root.
 ```sh
