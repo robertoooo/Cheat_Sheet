@@ -18,17 +18,24 @@ datalake_url = f"abfss://{source_container_name}@{storage_account_name}.dfs.core
 
 Mounting storage to Databricks 
 ```py
+storageAccountName = "storageaccountname"
+source_container_name = "container-name"
+storage_account_access_key_name = "access-key"
+scope_name = "key_vault_name"
 storageAccountAccessKey = dbutils.secrets.get(scope=scope_name,key=storage_account_access_key_name)
  
 try:
   dbutils.fs.mount(
-    source = f"wasbs://{source_container_name}@{storageAccountName}.blob.core.windows.net",
+    source = f"wasbs://{source_container_name}@{storageAccountName}.blob.core.windows.net", #Blob
+    source = f"abfss://{source_container_name}@{storageAccountName}.dfs.core.windows.net/", #Datalake
     mount_point = f"/mnt/filestore/{source_container_name}/",
     extra_configs = {'fs.azure.account.key.' + storageAccountName + '.blob.core.windows.net': storageAccountAccessKey}
   )
 except Exception as e:
   print(e)
+
 ```
+
 
 # Create Delta Table using the Delta Table Builder Class
 ```py
