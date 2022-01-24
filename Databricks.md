@@ -37,6 +37,12 @@ except Exception as e:
 ```
 Note access keys are not an option on ADLS whereas they can be used for normal blob containers without HNS enabled.
 
+Unmounting storage to Databricks
+```py
+dbutils.fs.unmount("/mnt/path/to/folder")
+```
+
+
 # Create Delta Table using the Delta Table Builder Class
 ```py
 from delta.tables import *
