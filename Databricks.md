@@ -35,7 +35,7 @@ except Exception as e:
   print(e)
 
 ```
-
+Note access keys are not an option on ADLS whereas they can be used for normal blob containers without HNS enabled.
 
 # Create Delta Table using the Delta Table Builder Class
 ```py
