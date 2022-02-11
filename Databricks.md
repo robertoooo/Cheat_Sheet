@@ -42,6 +42,11 @@ Unmounting storage to Databricks
 dbutils.fs.unmount("/mnt/path/to/folder")
 ```
 
+# Data Catalog
+```py
+spark.catalog.listDatabases() #List all databases
+spark.catalog.listTables() #List all tables, pass database as argument.
+```
 
 # Create Delta Table using the Delta Table Builder Class
 ```py
