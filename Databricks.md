@@ -49,12 +49,12 @@ spark.catalog.listTables() #List all tables, pass database as argument.
 ```
 # DataFrameWriter
 Using .option("mergeSchema", "true") to change the schema of the delta table
-"""py
+´´´py
 df.write.format("delta") \
            .option("mergeSchema", "true") \
            .mode("overwrite") \
            .save(path_delta_table)
-"""
+´´´
 
 # Create Delta Table using the Delta Table Builder Class
 ```py
