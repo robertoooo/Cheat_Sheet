@@ -1,4 +1,28 @@
+# Basics
+Create a data frame from a list with column names
+```py
+data_list = [("Ravi", "28", "1", "2002"),
+             ("Abdul", "23", "5", "81"),  # 1981
+             ("John", "12", "12", "6"),  # 2006
+             ("Rosy", "7", "8", "63"),  # 1963
+             ("Abdul", "23", "5", "81")]  # 1981
 
+raw_df = spark.createDataFrame(data_list).toDF("name", "day", "month", "year").repartition(3)
+raw_df.printSchema()
+```
+
+
+### UDF
+Register the udf with the spark session and the driver will serialize and send the function to the executors.
+
+```py
+def functionA(printthis): #Create a function
+  print("hej")
+  return("printthis")
+
+functionA_udf = udf(functionA, StringType()) #Register the udf with the spark session
+df = df.withColumn("A", functionA_udf("Hej"))
+```
 
 # Generate Time Series
 Using sequence with explode
