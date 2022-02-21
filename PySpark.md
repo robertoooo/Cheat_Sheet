@@ -1,14 +1,4 @@
-# UDFs 
-Register the udf with the spark session and the driver will serialize and send the function to the executors.
 
-```py
-def functionA(printthis): #Create a function
-  print("hej")
-  return("printthis")
-
-functionA_udf = udf(functionA, StringType()) #Register the udf with the spark session
-df = df.withColumn("A", functionA_udf("Hej"))
-```
 
 # Generate Time Series
 Using sequence with explode
