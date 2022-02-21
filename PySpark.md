@@ -15,6 +15,24 @@ Create a new column with a unique ID
 df1 = raw_df.withColumn("id", monotonically_increased_id())
 ```
 
+Case Expressions
+```py
+# Using SQL expression
+df2 = raw_df.withColumn("year", expr("""
+          case when year < 21 then year + 2000
+          when year < 100 then year + 1900
+          else year
+          end"""))
+          
+# Using column level expression
+df3 = raw_df.withColumn("year", \
+                    when(col("year") < 21, col("year") + 2000) \
+                    .when(col("year") < 100, col("year") + 1900) \
+                    .otherwise(col("year")))
+```
+
+
+
 ### UDF
 Register the udf with the spark session and the driver will serialize and send the function to the executors.
 
@@ -26,6 +44,8 @@ def functionA(printthis): #Create a function
 functionA_udf = udf(functionA, StringType()) #Register the udf with the spark session
 df = df.withColumn("A", functionA_udf("Hej"))
 ```
+
+
 
 # Generate Time Series
 Using sequence with explode
