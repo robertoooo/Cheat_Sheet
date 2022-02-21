@@ -10,7 +10,10 @@ data_list = [("Ravi", "28", "1", "2002"),
 raw_df = spark.createDataFrame(data_list).toDF("name", "day", "month", "year").repartition(3)
 raw_df.printSchema()
 ```
-
+Create a new column with a unique ID
+```py
+df1 = raw_df.withColumn("id", monotonically_increased_id())
+```
 
 ### UDF
 Register the udf with the spark session and the driver will serialize and send the function to the executors.
