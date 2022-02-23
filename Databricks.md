@@ -49,6 +49,7 @@ spark.catalog.listTables() #List all tables, pass database as argument.
 ```
 
 # Size of each delta table
+The actual size of the table excluding the history and retention.
 ```py
 list = dbutils.fs.ls("/mnt/filestore/raw/")
 
