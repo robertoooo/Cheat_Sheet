@@ -47,14 +47,26 @@ dbutils.fs.unmount("/mnt/path/to/folder")
 spark.catalog.listDatabases() #List all databases
 spark.catalog.listTables() #List all tables, pass database as argument.
 ```
+
+# Size of each delta table
+```py
+list = dbutils.fs.ls("/mnt/filestore/raw/")
+
+for deltatable in list:
+  tablename = (deltatable[1][:-1])
+  tableinfo = spark.sql(f"DESCRIBE DETAIL {tablename}").collect()
+  print(tableinfo[0][2], tableinfo[0][9]/1000000)
+ 
+ ```
+
 # DataFrameWriter
 Using .option("mergeSchema", "true") to change the schema of the delta table
-´´´py
+```py
 df.write.format("delta") \
            .option("mergeSchema", "true") \
            .mode("overwrite") \
            .save(path_delta_table)
-´´´
+```
 
 # Create Delta Table using the Delta Table Builder Class
 ```py
