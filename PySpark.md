@@ -1,5 +1,5 @@
 # Basics
-Create a data frame from a list with column names
+### Create a data frame from a list with column names
 ```py
 data_list = [("Ravi", "28", "1", "2002"),
              ("Abdul", "23", "5", "81"),  # 1981
@@ -15,7 +15,7 @@ Create a new column with a unique ID
 df1 = raw_df.withColumn("id", monotonically_increased_id())
 ```
 
-Case Expressions
+### Case Expressions
 ```py
 # Using SQL expression
 df2 = raw_df.withColumn("year", expr("""
@@ -30,8 +30,49 @@ df3 = raw_df.withColumn("year", \
                     .when(col("year") < 100, col("year") + 1900) \
                     .otherwise(col("year")))
 ```
+### Aggregations using agg
+*Grouping Aggregates*
+```py
+summary_df = invoice_df \
+    .groupBy("Country", "InvoiceNo") \
+    .agg(f.sum("Quantity").alias("TotalQuantity"),
+         f.round(f.sum(f.expr("Quantity * UnitPrice")), 2).alias("InvoiceValue"),
+         f.expr("round(sum(Quantity * UnitPrice),2) as InvoiceValueExpr")
+         )
+         
+# Using variables as aggregations
+NumInvoices = f.countDistinct("InvoiceNo").alias("NumInvoices")
+TotalQuantity = f.sum("Quantity").alias("TotalQuantity")
+InvoiceValue = f.expr("round(sum(Quantity * UnitPrice),2) as InvoiceValue")
 
+exSummary_df = invoice_df \
+    .withColumn("InvoiceDate", f.to_date(f.col("InvoiceDate"), "dd-MM-yyyy H.mm")) \
+    .where("year(InvoiceDate) == 2010") \
+    .withColumn("WeekNumber", f.weekofyear(f.col("InvoiceDate"))) \
+    .groupBy("Country", "WeekNumber") \
+    .agg(NumInvoices, TotalQuantity, InvoiceValue)
+```
+Using SQL Expression
+```py
+invoice_df.createOrReplaceTempView("sales")
+summary_sql = spark.sql("""
+      SELECT Country, InvoiceNo,
+            sum(Quantity) as TotalQuantity,
+            round(sum(Quantity*UnitPrice),2) as InvoiceValue
+      FROM sales
+      GROUP BY Country, InvoiceNo""")
+```
+*Window Aggregates*
+Possible to change the arguments for the method rowsBetween.
+```py
+running_total_window = Window.partitionBy("Country") \
+    .orderBy("WeekNumber") \
+    .rowsBetween(Window.unboundedPreceding, Window.currentRow)
 
+summary_df.withColumn("RunningTotal",
+                      f.sum("InvoiceValue").over(running_total_window)) \
+    .show()
+```
 
 ### UDF
 Register the udf with the spark session and the driver will serialize and send the function to the executors.
@@ -45,6 +86,7 @@ functionA_udf = udf(functionA, StringType()) #Register the udf with the spark se
 df = df.withColumn("A", functionA_udf("Hej"))
 ```
 
+### Dataframe Joins
 
 
 # Generate Time Series
