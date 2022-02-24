@@ -87,7 +87,17 @@ df = df.withColumn("A", functionA_udf("Hej"))
 ```
 
 ### Dataframe Joins
+Basic inner join using a join expression
+```py
+join_expr = order_df.prod_id == product_df.prod_id
 
+product_renamed_df = product_df.withColumnRenamed("qty", "reorder_qty")
+
+order_df.join(product_renamed_df, join_expr, "inner") \
+    .drop(product_renamed_df.prod_id) \
+    .select("order_id", "prod_id", "prod_name", "unit_price", "list_price", "qty") \
+    .show()
+```
 
 # Generate Time Series
 Using sequence with explode
