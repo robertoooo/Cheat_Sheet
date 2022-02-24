@@ -31,7 +31,7 @@ df3 = raw_df.withColumn("year", \
                     .otherwise(col("year")))
 ```
 ### Aggregations using agg
-*Grouping Aggregates*
+**Grouping Aggregates**
 ```py
 summary_df = invoice_df \
     .groupBy("Country", "InvoiceNo") \
@@ -62,7 +62,7 @@ summary_sql = spark.sql("""
       FROM sales
       GROUP BY Country, InvoiceNo""")
 ```
-*Window Aggregates*
+**Window Aggregates**
 Possible to change the arguments for the method rowsBetween.
 ```py
 running_total_window = Window.partitionBy("Country") \
