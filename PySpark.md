@@ -99,6 +99,21 @@ order_df.join(product_renamed_df, join_expr, "inner") \
     .show()
 ```
 
+Left join using coalesce for all the null values
+```py
+join_expr = order_df.prod_id == product_df.prod_id
+
+product_renamed_df = product_df.withColumnRenamed("qty", "reorder_qty")
+
+order_df.join(product_renamed_df, join_expr, "left") \
+    .drop(product_renamed_df.prod_id) \
+    .select("order_id", "prod_id", "prod_name", "unit_price", "list_price", "qty") \
+    .withColumn("prod_name", expr("coalesce(prod_name, prod_id)")) \
+    .withColumn("list_price", expr("coalesce(list_price, unit_price)")) \
+    .sort("order_id") \
+    .show()
+```
+
 # Generate Time Series
 Using sequence with explode
 ```py
