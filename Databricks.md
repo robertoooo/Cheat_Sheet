@@ -1,3 +1,16 @@
+# Views and Tables
+List all the views
+```sql
+SHOW VIEWS
+```
+
+
+Show the create table/view statement
+```sql
+SHOW CREATE TABLE <table-name>
+```
+
+
 # Setup Azure Datalake connection using access key and secrets
 Setup Variables
 ```py
