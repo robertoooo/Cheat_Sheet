@@ -1,3 +1,14 @@
+# See latest table changes to a db
+```sql
+select schema_name(schema_id) as schema_name,
+       name as table_name,
+       create_date,
+       modify_date
+from sys.tables
+where modify_date > DATEADD(DAY, -30, CURRENT_TIMESTAMP)
+order by modify_date desc;
+```
+
 # Create user and grant OBJECT permissions
 
 List logins & users
