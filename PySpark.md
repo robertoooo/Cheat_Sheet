@@ -1,3 +1,15 @@
+# Parsing
+Arrays and Structs
+```py
+from pyspark.sql.functions import explode
+df = df_raw.select(explode(col("array_col")))
+
+# extract all columns from a struct column namned col
+df.select(col("col.*"))
+
+
+```
+
 # Basics
 ### Create a data frame from a list with column names
 ```py
