@@ -6,8 +6,14 @@ df = df_raw.select(explode(col("array_col")))
 
 # extract all columns from a struct column namned col
 df.select(col("col.*"))
+```
 
+# Processing
+Truncate time with function date_trunc
 
+```py
+from pyspark.sql.functions import date_trunc
+df_second = df.withColumn("timestamp", date_trunc("second",col("timestamp")))
 ```
 
 # Basics
