@@ -16,6 +16,21 @@ from pyspark.sql.functions import date_trunc
 df_second = df.withColumn("timestamp", date_trunc("second",col("timestamp")))
 ```
 
+Explode two columns together
+```py
+import pyspark.sql.functions as F
+from pyspark.sql.types import *
+
+df = sql.createDataFrame(
+    [(['Bob'], [16], ['Maths','Physics','Chemistry'], ['A','B','C'])],
+    ['Name','Age','Subjects', 'Grades'])
+df = df.withColumn("new", F.arrays_zip("Subjects", "Grades"))\
+       .withColumn("new", F.explode("new"))\
+       .select("Name", "Age", F.col("new.Subjects").alias("Subjects"), F.col("new.Grades").alias("Grades"))
+df.show()
+
+```
+
 # Basics
 ### Create a data frame from a list with column names
 ```py
