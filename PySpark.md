@@ -8,7 +8,7 @@ df = df_raw.select(explode(col("array_col")))
 df.select(col("col.*"))
 ```
 
-# Processing
+# Functions
 Truncate time with function date_trunc
 
 ```py
