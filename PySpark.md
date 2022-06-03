@@ -120,6 +120,12 @@ df = df.withColumn("A", functionA_udf("Hej"))
 ```
 
 ### Dataframe Joins
+Join with identical column name -> no duplicate columns
+```py
+df_join = df_1_dt.join(df_2, ["col1", "col2","col3"], 'inner')
+
+```
+
 Basic inner join using a join expression
 ```py
 join_expr = order_df.prod_id == product_df.prod_id
