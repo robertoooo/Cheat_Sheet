@@ -19,3 +19,17 @@ You will need to overwrite some spark settings to enable vacuum with a value les
 SET spark.databricks.delta.retentionDurationCheck.enable = false;
 SET spark.databricks.delta.vacuum.logging.enable = true;
 ```
+
+Review the Table History
+```sql
+DESCRIBE HISTORY students
+```
+
+Create a temporary view from a previous version
+```sql
+CREATE OR REPLACE TEMP VIEW students AS SELECT * FROM students VERSION AS OF 4
+```
+
+Drop database and underlying tables
+```sql
+DROP DATABASE databasename CASCADE;
