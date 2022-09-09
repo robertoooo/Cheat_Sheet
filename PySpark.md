@@ -20,6 +20,7 @@ ranked_df = (users_df.withColumn("rank", F.rank().over(window))
                      .drop("rank"))
 display(ranked_df)
 ```
+https://www.youtube.com/watch?v=wH6RaEWuiDQ
 
 # Functions
 Truncate time with function date_trunc
