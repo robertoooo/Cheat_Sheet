@@ -8,6 +8,19 @@ df = df_raw.select(explode(col("array_col")))
 df.select(col("col.*"))
 ```
 
+# Window function: Chosing the latest transaction based on single column
+
+```py
+from pyspark.sql.window import Window
+
+window = Window.partitionBy("user_id").orderBy(F.col("timestamp").desc())
+print(window)
+ranked_df = (users_df.withColumn("rank", F.rank().over(window))
+                     .filter("rank == 1")
+                     .drop("rank"))
+display(ranked_df)
+```
+
 # Functions
 Truncate time with function date_trunc
 
