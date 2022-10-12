@@ -1,3 +1,17 @@
+# Unity Catalog
+### Communicate with data lake through Unity Catalog
+(asd)[https://learn.microsoft.com/en-us/azure/databricks/data-governance/unity-catalog/create-tables]
+```py
+display(spark.sql("LIST 'abfss://<path_to_files>'"))
+display(spark.read.load("abfss:://<path_to_files>"))
+
+```
+
+# Saving an external table with relation to metastore
+```py
+df.write.format("delta").mode("overwrite").option("path",target_storage_path).saveAsTable(target_table_path)
+```
+
 # Parsing
 Arrays and Structs
 ```py
