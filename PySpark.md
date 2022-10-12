@@ -9,6 +9,11 @@ display(spark.read.load("abfss:://<path_to_files>"))
 
 ```
 
+Delete files
+```py
+dbutils.fs.rm("abfss://path", True)
+```
+
 # Saving an external table with relation to metastore
 ```py
 df.write.format("delta").mode("overwrite").option("path",target_storage_path).saveAsTable(target_table_path)
