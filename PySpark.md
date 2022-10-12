@@ -14,10 +14,38 @@ Delete files
 dbutils.fs.rm("abfss://path", True)
 ```
 
-# Saving an external table with relation to metastore
+## Saving an external table with relation to metastore
 ```py
 df.write.format("delta").mode("overwrite").option("path",target_storage_path).saveAsTable(target_table_path)
 ```
+
+# Running spark session with pyspark
+
+```py
+@pytest.fixture(scope="session")
+def spark() -> SparkSession:
+    warehouse_location = abspath('spark-warehouse')
+    _builder = (
+        SparkSession.builder.master("local[*]")
+        .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
+        .config("spark.ui.showConsoleProgress", "true")
+        .config("spark.sql.catalog.spark_catalog","org.apache.spark.sql.delta.catalog.DeltaCatalog",)
+        .config("spark.databricks.delta.optimizeWrite.enabled", "true")
+        .config("spark.databricks.delta.autoCompact.enabled", "true")
+        .config("spark.streaming.stopGracefullyOnShutdown","true")
+        .config("spark.sql.warehouse.dir", warehouse_location)
+        .enableHiveSupport()
+        .appName("appname")
+    )
+    spark: SparkSession = configure_spark_with_delta_pip(_builder, spark_packages).getOrCreate()
+    yield spark
+    spark.stop()
+    if Path(warehouse_location).exists():
+        shutil.rmtree(warehouse_location)
+```
+
+### Adding hive thrift server to session
+By adding these config files
 
 # Parsing
 Arrays and Structs
