@@ -18,6 +18,15 @@ dbutils.fs.rm("abfss://path", True)
 ```py
 df.write.format("delta").mode("overwrite").option("path",target_storage_path).saveAsTable(target_table_path)
 ```
+Saving a table with the path
+```py
+df.write.format("delta").mode("overwrite").save("/tmp/delta/people10m")
+```
+Create a table in the metastore
+```py
+df.write.format("delta").saveAsTable("default.people10m")
+```
+
 
 # Running spark session with pyspark
 
