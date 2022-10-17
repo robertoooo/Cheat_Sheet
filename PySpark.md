@@ -6,6 +6,8 @@
 ```py
 display(spark.sql("LIST 'abfss://<path_to_files>'"))
 display(spark.read.load("abfss:://<path_to_files>"))
+#Read files or table using the WITH statement to define the storage credentials
+spark.sql("SELECT count(1) FROM `delta`.`s3://depts/hr/employees` WITH (CREDENTIAL my_aws_storage_cred);") 
 
 ```
 
