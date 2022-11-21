@@ -58,6 +58,14 @@ def spark() -> SparkSession:
 ### Adding hive thrift server to session
 By adding these config files
 
+## Setting and reading spark environment variables
+spark.conf.set("key", "value")
+spark.conf.get("key")
+
+### Mocking an object
+mocker.patch.object(object, 'attribute_name', attribute_value)
+
+
 # Parsing
 Arrays and Structs
 ```py
