@@ -59,12 +59,14 @@ def spark() -> SparkSession:
 By adding these config files
 
 ## Setting and reading spark environment variables
+```py
 spark.conf.set("key", "value")
 spark.conf.get("key")
-
+```
 ### Mocking an object
+```py
 mocker.patch.object(object, 'attribute_name', attribute_value)
-
+```
 
 # Parsing
 Arrays and Structs
