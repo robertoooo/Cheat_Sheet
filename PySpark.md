@@ -62,6 +62,7 @@ By adding these config files
 ```py
 spark.conf.set("key", "value")
 spark.conf.get("key")
+spark.conf.isModifiable("spark.databricks.delta.merge.repartitionBeforeWrite.enabled") # Check if the session configuration is modifiable
 ```
 ### Mocking an object
 ```py
