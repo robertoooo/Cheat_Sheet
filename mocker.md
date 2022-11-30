@@ -8,7 +8,7 @@ mocker.patch.object(object, 'attribute_name', attribute_value)
 ### Mocking a method
 ```py
 mocker.patch("dir1.dir2.script.class.method")
-mocker.patch("dir1.dir2.script.class.method", return_value="anything")
+mocker.patch("dir1.dir2.script.class.method", return_value="anything", new_callable=mocker.PropertyMock, create=True))
 
 ```
 
